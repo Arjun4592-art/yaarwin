@@ -1,0 +1,334 @@
+/* ============================================================
+   YAARWIN — global.css (WITH SMOOTH ANIMATIONS)
+   Theme  : Black + Green (Dark Gaming)
+   Fonts  : Poppins (headings) + Inter (body)
+   Tailwind: v4 — single @import, no config file needed
+   ============================================================ */
+
+/* ── Tailwind v4 ── */
+@import 'tailwindcss';
+
+/* ============================================================
+   1. CSS CUSTOM PROPERTIES  (Design Tokens)
+   ============================================================ */
+:root {
+  /* ── Colors ── */
+  --color-yw-black: #0a0d0b;
+  --color-yw-black-soft: #0d0d0d;
+  --color-yw-black-card: #111111;
+  --color-yw-black-hover: #1a1a1a;
+  --color-yw-black-border: #1f1f1f;
+
+  --color-yw-green: #00c853;
+  --color-yw-green-dark: #1b5e20;
+  --color-yw-green-mid: #2e7d32;
+  --color-yw-green-light: #69f0ae;
+  --color-yw-green-glow: rgba(0, 200, 83, 0.35);
+  --color-yw-green-glow-soft: rgba(0, 200, 83, 0.15);
+
+  --color-yw-white: #ffffff;
+  --color-yw-text-primary: #ffffff;
+  --color-yw-text-secondary: #a3a3a3;
+  --color-yw-text-muted: #555555;
+  --color-yw-text-inverse: #000000;
+
+  --color-yw-success: #00c853;
+  --color-yw-warning: #ffb300;
+  --color-yw-danger: #ef5350;
+  --color-yw-info: #29b6f6;
+
+  /* ── Typography ── */
+  --yw-font-heading: 'Poppins', sans-serif;
+  --yw-font-body: 'Inter', sans-serif;
+
+  --yw-text-xs: 0.75rem;
+  --yw-text-sm: 0.875rem;
+  --yw-text-base: 0.9375rem;
+  --yw-text-md: 1rem;
+  --yw-text-lg: 1.125rem;
+  --yw-text-xl: 1.25rem;
+  --yw-text-2xl: 1.5rem;
+  --yw-text-3xl: 1.875rem;
+  --yw-text-4xl: 2.25rem;
+  --yw-text-5xl: 3rem;
+
+  /* ── Spacing ── */
+  --yw-space-1: 4px;
+  --yw-space-2: 8px;
+  --yw-space-3: 12px;
+  --yw-space-4: 16px;
+  --yw-space-5: 20px;
+  --yw-space-6: 24px;
+  --yw-space-8: 32px;
+  --yw-space-10: 40px;
+  --yw-space-12: 48px;
+  --yw-space-16: 64px;
+
+  /* ── Border radius ── */
+  --yw-radius-sm: 4px;
+  --yw-radius-md: 8px;
+  --yw-radius-lg: 12px;
+  --yw-radius-xl: 16px;
+  --yw-radius-2xl: 24px;
+  --yw-radius-full: 9999px;
+
+  /* ── Transitions ── */
+  --yw-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --yw-duration-1: 100ms;
+  --yw-duration-2: 200ms;
+  --yw-duration-3: 300ms;
+  --yw-duration-4: 400ms;
+  --yw-duration-5: 500ms;
+
+  /* ── Shadows ── */
+  --yw-shadow-green: 0 0 20px rgba(0, 200, 83, 0.35);
+  --yw-shadow-green-lg: 0 0 40px rgba(0, 200, 83, 0.25);
+  --yw-shadow-card: 0 4px 24px rgba(0, 0, 0, 0.6);
+
+  /* ── Z-index ── */
+  --yw-z-base: 1;
+  --yw-z-above: 10;
+  --yw-z-modal: 100;
+  --yw-z-toast: 200;
+  --yw-z-tooltip: 300;
+}
+
+/* ============================================================
+   2. CSS RESET + BASE
+   ============================================================ */
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--yw-font-body);
+  font-size: var(--yw-text-base);
+  line-height: 1.6;
+  /* color: var(--yw-text-primary); */
+  /* background-color: var(--yw-black); */
+  min-height: 100vh;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--yw-font-heading);
+}
+
+/* ============================================================
+   3. ANIMATION KEYFRAMES
+   ============================================================ */
+@keyframes yw-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes yw-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes yw-fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes yw-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes yw-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes yw-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes yw-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   4. ANIMATION UTILITY CLASSES
+   ============================================================ */
+.animate-fade-in-up {
+  animation: yw-fade-in-up 0.5s var(--yw-ease) forwards;
+}
+
+.animate-fade-in {
+  animation: yw-fade-in 0.4s var(--yw-ease) forwards;
+}
+
+.animate-fade-in-down {
+  animation: yw-fade-in-down 0.5s var(--yw-ease) forwards;
+}
+
+.animate-scale-in {
+  animation: yw-scale-in 0.35s var(--yw-ease) forwards;
+}
+
+.animate-slide-left {
+  animation: yw-slide-in-left 0.45s var(--yw-ease) forwards;
+}
+
+.animate-slide-right {
+  animation: yw-slide-in-right 0.45s var(--yw-ease) forwards;
+}
+
+/* ============================================================
+   5. BUTTON COMPONENTS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--yw-font-heading);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  border: 1.5px solid transparent;
+  border-radius: var(--yw-radius-md);
+  text-decoration: none;
+  transition:
+    background-color var(--yw-duration-2) var(--yw-ease),
+    color var(--yw-duration-2) var(--yw-ease),
+    border-color var(--yw-duration-2) var(--yw-ease),
+    box-shadow var(--yw-duration-2) var(--yw-ease),
+    transform var(--yw-duration-1) var(--yw-ease),
+    opacity var(--yw-duration-2) var(--yw-ease);
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.btn-primary {
+  background-color: var(--yw-green);
+  color: var(--yw-text-inverse);
+  border-color: var(--yw-green);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--yw-green-light);
+  border-color: var(--yw-green-light);
+  box-shadow: var(--yw-shadow-green);
+  color: var(--yw-text-inverse);
+}
+
+/* ============================================================
+   6. BASE LINK STYLING
+   ============================================================ */
+a {
+  color: var(--yw-green);
+  text-decoration: none;
+  transition: color var(--yw-duration-2) var(--yw-ease);
+}
+
+a:hover {
+  color: var(--yw-green-light);
+}
+
+/* ============================================================
+   7. SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--yw-black-soft);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--yw-green-dark);
+  border-radius: var(--yw-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--yw-green);
+}
+
+::selection {
+  background: var(--yw-green);
+  color: var(--yw-text-inverse);
+}
+
+:focus-visible {
+  outline: 2px solid var(--yw-green);
+  outline-offset: 3px;
+  border-radius: var(--yw-radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
