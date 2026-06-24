@@ -1,9 +1,13 @@
 /* ============================================================
-   YAARWIN — global.css (WITH SMOOTH ANIMATIONS)
-   Theme  : Black + Green (Dark Gaming)
+   YAARWIN — globals.css
+   Theme  : White + Green (Light Gaming)
    Fonts  : Poppins (headings) + Inter (body)
    Tailwind: v4 — single @import, no config file needed
+   Next.js compatible + cross-browser prefixes
    ============================================================ */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
 
 /* ── Tailwind v4 ── */
 @import 'tailwindcss';
@@ -12,34 +16,55 @@
    1. CSS CUSTOM PROPERTIES  (Design Tokens)
    ============================================================ */
 :root {
-  /* ── Colors ── */
-  --color-yw-black: #0a0d0b;
-  --color-yw-black-soft: #0d0d0d;
-  --color-yw-black-card: #111111;
-  --color-yw-black-hover: #1a1a1a;
-  --color-yw-black-border: #1f1f1f;
+  /* ── Core Colors ── */
+  --color-yw-white: #ffffff;
+  --color-yw-off-white: #f8fdf9;
+  --color-yw-white-tint: #e8fdf0;
+  --color-yw-white-tint-2: #d0fae4;
+  --color-yw-white-card: #ffffff;
+  --color-yw-white-hover: #f0fbf4;
+  --color-yw-white-border: #e2f3e8;
 
   --color-yw-green: #00c853;
   --color-yw-green-dark: #1b5e20;
   --color-yw-green-mid: #2e7d32;
+  --color-yw-green-deep: #00712c;
   --color-yw-green-light: #69f0ae;
+  --color-yw-green-soft: #b9fbc0;
   --color-yw-green-glow: rgba(0, 200, 83, 0.35);
-  --color-yw-green-glow-soft: rgba(0, 200, 83, 0.15);
+  --color-yw-green-glow-sm: rgba(0, 200, 83, 0.18);
 
-  --color-yw-white: #ffffff;
-  --color-yw-text-primary: #ffffff;
-  --color-yw-text-secondary: #a3a3a3;
-  --color-yw-text-muted: #555555;
-  --color-yw-text-inverse: #000000;
+  /* ── Text ── */
+  --color-yw-text-primary: #1a2e20;
+  --color-yw-text-secondary: #3d5244;
+  --color-yw-text-muted: #6b7c6f;
+  --color-yw-text-hint: #a3b8a8;
+  --color-yw-text-green: #00a844;
+  --color-yw-text-inverse: #ffffff;
 
+  /* ── Semantic ── */
   --color-yw-success: #00c853;
   --color-yw-warning: #ffb300;
   --color-yw-danger: #ef5350;
   --color-yw-info: #29b6f6;
 
+  /* ── Gradients ── */
+  --yw-gradient-primary: linear-gradient(135deg, #00c853 0%, #69f0ae 100%);
+  --yw-gradient-soft: linear-gradient(135deg, #e8fdf0 0%, #d0fae4 100%);
+  --yw-gradient-strip: linear-gradient(
+    to right,
+    #00c853 0%,
+    #69f0ae 50%,
+    #b9fbc0 100%
+  );
+  --yw-gradient-text: linear-gradient(135deg, #00c853, #1b5e20);
+  --yw-gradient-border: linear-gradient(135deg, #00c853, #69f0ae);
+
   /* ── Typography ── */
-  --yw-font-heading: 'Poppins', sans-serif;
-  --yw-font-body: 'Inter', sans-serif;
+  --yw-font-heading:
+    'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --yw-font-body:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   --yw-text-xs: 0.75rem;
   --yw-text-sm: 0.875rem;
@@ -64,12 +89,12 @@
   --yw-space-12: 48px;
   --yw-space-16: 64px;
 
-  /* ── Border radius ── */
+  /* ── Border Radius ── */
   --yw-radius-sm: 4px;
   --yw-radius-md: 8px;
   --yw-radius-lg: 12px;
-  --yw-radius-xl: 16px;
-  --yw-radius-2xl: 24px;
+  --yw-radius-xl: 14px;
+  --yw-radius-2xl: 20px;
   --yw-radius-full: 9999px;
 
   /* ── Transitions ── */
@@ -81,9 +106,15 @@
   --yw-duration-5: 500ms;
 
   /* ── Shadows ── */
-  --yw-shadow-green: 0 0 20px rgba(0, 200, 83, 0.35);
-  --yw-shadow-green-lg: 0 0 40px rgba(0, 200, 83, 0.25);
-  --yw-shadow-card: 0 4px 24px rgba(0, 0, 0, 0.6);
+  --yw-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --yw-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --yw-shadow-green:
+    0 0 0 3px rgba(0, 200, 83, 0.25), 0 4px 24px rgba(0, 200, 83, 0.4);
+  --yw-shadow-green-sm:
+    0 0 0 3px rgba(0, 200, 83, 0.18), 0 4px 20px rgba(0, 200, 83, 0.22);
+  --yw-shadow-green-glow: 0 0 18px rgba(0, 200, 83, 0.28);
+  --yw-shadow-card-hover:
+    0 0 0 2px rgba(0, 200, 83, 0.3), 0 8px 32px rgba(0, 200, 83, 0.18);
 
   /* ── Z-index ── */
   --yw-z-base: 1;
@@ -97,6 +128,13 @@
    2. CSS RESET + BASE
    ============================================================ */
 
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -109,8 +147,8 @@ body {
   font-family: var(--yw-font-body);
   font-size: var(--yw-text-base);
   line-height: 1.6;
-  /* color: var(--yw-text-primary); */
-  /* background-color: var(--yw-black); */
+  color: var(--color-yw-text-primary);
+  background-color: var(--color-yw-off-white);
   min-height: 100vh;
 }
 
@@ -123,6 +161,17 @@ svg {
 
 button {
   cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 ul,
@@ -132,20 +181,26 @@ ol {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--yw-font-heading);
 }
 
 /* ============================================================
    3. ANIMATION KEYFRAMES
    ============================================================ */
+
 @keyframes yw-fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(-12px);
+    -webkit-transform: translateY(12px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
+    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 }
@@ -162,10 +217,12 @@ h3 {
 @keyframes yw-fade-in-down {
   from {
     opacity: 0;
+    -webkit-transform: translateY(-24px);
     transform: translateY(-24px);
   }
   to {
     opacity: 1;
+    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 }
@@ -173,10 +230,12 @@ h3 {
 @keyframes yw-scale-in {
   from {
     opacity: 0;
+    -webkit-transform: scale(0.9);
     transform: scale(0.9);
   }
   to {
     opacity: 1;
+    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
@@ -184,10 +243,12 @@ h3 {
 @keyframes yw-slide-in-left {
   from {
     opacity: 0;
+    -webkit-transform: translateX(-32px);
     transform: translateX(-32px);
   }
   to {
     opacity: 1;
+    -webkit-transform: translateX(0);
     transform: translateX(0);
   }
 }
@@ -195,140 +256,555 @@ h3 {
 @keyframes yw-slide-in-right {
   from {
     opacity: 0;
+    -webkit-transform: translateX(32px);
     transform: translateX(32px);
   }
   to {
     opacity: 1;
+    -webkit-transform: translateX(0);
     transform: translateX(0);
   }
 }
 
 @keyframes yw-spin {
   to {
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
+  }
+}
+
+@keyframes yw-pulse-glow {
+  0%,
+  100% {
+    -webkit-box-shadow: 0 0 12px rgba(0, 200, 83, 0.2);
+    box-shadow: 0 0 12px rgba(0, 200, 83, 0.2);
+  }
+  50% {
+    -webkit-box-shadow: 0 0 28px rgba(0, 200, 83, 0.5);
+    box-shadow: 0 0 28px rgba(0, 200, 83, 0.5);
   }
 }
 
 /* ============================================================
    4. ANIMATION UTILITY CLASSES
    ============================================================ */
+
 .animate-fade-in-up {
-  animation: yw-fade-in-up 0.5s var(--yw-ease) forwards;
+  -webkit-animation: yw-fade-in-up 0.5s var(--yw-ease) both;
+  animation: yw-fade-in-up 0.5s var(--yw-ease) both;
 }
 
 .animate-fade-in {
-  animation: yw-fade-in 0.4s var(--yw-ease) forwards;
+  -webkit-animation: yw-fade-in 0.4s var(--yw-ease) both;
+  animation: yw-fade-in 0.4s var(--yw-ease) both;
 }
 
 .animate-fade-in-down {
-  animation: yw-fade-in-down 0.5s var(--yw-ease) forwards;
+  -webkit-animation: yw-fade-in-down 0.5s var(--yw-ease) both;
+  animation: yw-fade-in-down 0.5s var(--yw-ease) both;
 }
 
 .animate-scale-in {
-  animation: yw-scale-in 0.35s var(--yw-ease) forwards;
+  -webkit-animation: yw-scale-in 0.35s var(--yw-ease) both;
+  animation: yw-scale-in 0.35s var(--yw-ease) both;
 }
 
 .animate-slide-left {
-  animation: yw-slide-in-left 0.45s var(--yw-ease) forwards;
+  -webkit-animation: yw-slide-in-left 0.45s var(--yw-ease) both;
+  animation: yw-slide-in-left 0.45s var(--yw-ease) both;
 }
 
 .animate-slide-right {
-  animation: yw-slide-in-right 0.45s var(--yw-ease) forwards;
+  -webkit-animation: yw-slide-in-right 0.45s var(--yw-ease) both;
+  animation: yw-slide-in-right 0.45s var(--yw-ease) both;
+}
+
+.animate-spin {
+  -webkit-animation: yw-spin 0.7s linear infinite;
+  animation: yw-spin 0.7s linear infinite;
+}
+
+.animate-pulse-glow {
+  -webkit-animation: yw-pulse-glow 2s var(--yw-ease) infinite;
+  animation: yw-pulse-glow 2s var(--yw-ease) infinite;
+}
+
+/* stagger helpers */
+.delay-1 {
+  -webkit-animation-delay: 100ms;
+  animation-delay: 100ms;
+}
+.delay-2 {
+  -webkit-animation-delay: 200ms;
+  animation-delay: 200ms;
+}
+.delay-3 {
+  -webkit-animation-delay: 300ms;
+  animation-delay: 300ms;
+}
+.delay-4 {
+  -webkit-animation-delay: 400ms;
+  animation-delay: 400ms;
 }
 
 /* ============================================================
    5. BUTTON COMPONENTS
    ============================================================ */
+
 .btn {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   gap: 8px;
   font-family: var(--yw-font-heading);
   font-weight: 600;
+  font-size: var(--yw-text-sm);
+  padding: 10px 22px;
   white-space: nowrap;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
-  border: 1.5px solid transparent;
+  border: none;
+  -webkit-border-radius: var(--yw-radius-md);
   border-radius: var(--yw-radius-md);
   text-decoration: none;
-  transition:
+  position: relative;
+  outline: none;
+  -webkit-transition:
+    -webkit-transform var(--yw-duration-1) var(--yw-ease),
+    -webkit-box-shadow var(--yw-duration-2) var(--yw-ease),
     background-color var(--yw-duration-2) var(--yw-ease),
     color var(--yw-duration-2) var(--yw-ease),
-    border-color var(--yw-duration-2) var(--yw-ease),
-    box-shadow var(--yw-duration-2) var(--yw-ease),
-    transform var(--yw-duration-1) var(--yw-ease),
     opacity var(--yw-duration-2) var(--yw-ease);
+  -o-transition:
+    transform var(--yw-duration-1) var(--yw-ease),
+    box-shadow var(--yw-duration-2) var(--yw-ease),
+    background-color var(--yw-duration-2) var(--yw-ease),
+    color var(--yw-duration-2) var(--yw-ease),
+    opacity var(--yw-duration-2) var(--yw-ease);
+  transition:
+    transform var(--yw-duration-1) var(--yw-ease),
+    box-shadow var(--yw-duration-2) var(--yw-ease),
+    background-color var(--yw-duration-2) var(--yw-ease),
+    color var(--yw-duration-2) var(--yw-ease),
+    opacity var(--yw-duration-2) var(--yw-ease),
+    -webkit-transform var(--yw-duration-1) var(--yw-ease),
+    -webkit-box-shadow var(--yw-duration-2) var(--yw-ease);
 }
 
 .btn:active:not(:disabled) {
+  -webkit-transform: scale(0.96);
+  -ms-transform: scale(0.96);
   transform: scale(0.96);
 }
 
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* -- Size variants -- */
+.btn-sm {
+  font-size: var(--yw-text-xs);
+  padding: 7px 14px;
+}
+.btn-lg {
+  font-size: var(--yw-text-md);
+  padding: 13px 30px;
+}
+.btn-pill {
+  -webkit-border-radius: var(--yw-radius-full);
+  border-radius: var(--yw-radius-full);
+}
+
+/* -- Primary: green gradient + glow on hover -- */
 .btn-primary {
-  background-color: var(--yw-green);
-  color: var(--yw-text-inverse);
-  border-color: var(--yw-green);
+  background: var(--yw-gradient-primary);
+  color: var(--color-yw-text-inverse);
+  -webkit-box-shadow: 0 2px 12px rgba(0, 200, 83, 0.18);
+  box-shadow: 0 2px 12px rgba(0, 200, 83, 0.18);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: var(--yw-green-light);
-  border-color: var(--yw-green-light);
+  -webkit-box-shadow: var(--yw-shadow-green);
   box-shadow: var(--yw-shadow-green);
-  color: var(--yw-text-inverse);
+  -webkit-transform: translateY(-1px);
+  -ms-transform: translateY(-1px);
+  transform: translateY(-1px);
+}
+
+/* -- Secondary: white + gradient border + glow on hover -- */
+.btn-secondary {
+  background: var(--color-yw-white);
+  color: var(--color-yw-text-green);
+  border: 1.5px solid transparent;
+  /* Cross-browser gradient border via background-clip trick */
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  -webkit-box-shadow:
+    var(--yw-shadow-sm),
+    inset 0 0 0 1.5px rgba(0, 200, 83, 0.35);
+  box-shadow:
+    var(--yw-shadow-sm),
+    inset 0 0 0 1.5px rgba(0, 200, 83, 0.35);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  -webkit-box-shadow:
+    var(--yw-shadow-green-sm),
+    inset 0 0 0 1.5px rgba(0, 200, 83, 0.7);
+  box-shadow:
+    var(--yw-shadow-green-sm),
+    inset 0 0 0 1.5px rgba(0, 200, 83, 0.7);
+  -webkit-transform: translateY(-1px);
+  -ms-transform: translateY(-1px);
+  transform: translateY(-1px);
+}
+
+/* -- Ghost: transparent + green border + glow on hover -- */
+.btn-ghost {
+  background: transparent;
+  color: var(--color-yw-green);
+  border: 1.5px solid rgba(0, 200, 83, 0.35);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: rgba(0, 200, 83, 0.07);
+  border-color: rgba(0, 200, 83, 0.65);
+  -webkit-box-shadow: var(--yw-shadow-green-glow);
+  box-shadow: var(--yw-shadow-green-glow);
+  -webkit-transform: translateY(-1px);
+  -ms-transform: translateY(-1px);
+  transform: translateY(-1px);
+}
+
+/* -- Soft: light tint gradient (pill variant) -- */
+.btn-soft {
+  background: var(--yw-gradient-soft);
+  color: var(--color-yw-green-deep);
+  border: 1px solid rgba(0, 200, 83, 0.2);
+  -webkit-box-shadow: 0 1px 6px rgba(0, 200, 83, 0.1);
+  box-shadow: 0 1px 6px rgba(0, 200, 83, 0.1);
+}
+
+.btn-soft:hover:not(:disabled) {
+  -webkit-box-shadow: var(--yw-shadow-green-sm);
+  box-shadow: var(--yw-shadow-green-sm);
+  -webkit-transform: translateY(-1px);
+  -ms-transform: translateY(-1px);
+  transform: translateY(-1px);
+}
+
+/* -- Danger ghost -- */
+.btn-danger {
+  background: transparent;
+  color: #b91c1c;
+  border: 1.5px solid rgba(239, 83, 80, 0.3);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: rgba(239, 83, 80, 0.06);
+  border-color: rgba(239, 83, 80, 0.6);
+  -webkit-box-shadow: 0 0 16px rgba(239, 83, 80, 0.22);
+  box-shadow: 0 0 16px rgba(239, 83, 80, 0.22);
+  -webkit-transform: translateY(-1px);
+  -ms-transform: translateY(-1px);
+  transform: translateY(-1px);
 }
 
 /* ============================================================
-   6. BASE LINK STYLING
+   6. CARD COMPONENTS
    ============================================================ */
+
+.card {
+  background: var(--color-yw-white-card);
+  -webkit-border-radius: var(--yw-radius-xl);
+  border-radius: var(--yw-radius-xl);
+  border: 1px solid rgba(0, 200, 83, 0.12);
+  -webkit-box-shadow: var(--yw-shadow-card);
+  box-shadow: var(--yw-shadow-card);
+  padding: 1.25rem;
+  -webkit-transition:
+    -webkit-box-shadow var(--yw-duration-3) var(--yw-ease),
+    -webkit-transform var(--yw-duration-2) var(--yw-ease);
+  -o-transition:
+    box-shadow var(--yw-duration-3) var(--yw-ease),
+    transform var(--yw-duration-2) var(--yw-ease);
+  transition:
+    box-shadow var(--yw-duration-3) var(--yw-ease),
+    transform var(--yw-duration-2) var(--yw-ease),
+    -webkit-box-shadow var(--yw-duration-3) var(--yw-ease),
+    -webkit-transform var(--yw-duration-2) var(--yw-ease);
+}
+
+.card-hover:hover {
+  -webkit-box-shadow: var(--yw-shadow-card-hover);
+  box-shadow: var(--yw-shadow-card-hover);
+  -webkit-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  transform: translateY(-2px);
+}
+
+.card-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-yw-green-deep);
+  background: var(--yw-gradient-soft);
+  border: 1px solid rgba(0, 200, 83, 0.25);
+  -webkit-border-radius: var(--yw-radius-full);
+  border-radius: var(--yw-radius-full);
+  padding: 2px 10px;
+}
+
+/* ============================================================
+   7. FORM ELEMENTS
+   ============================================================ */
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: var(--yw-text-sm);
+  font-family: var(--yw-font-body);
+  color: var(--color-yw-text-primary);
+  background: var(--color-yw-white);
+  border: 1.5px solid rgba(0, 200, 83, 0.25);
+  -webkit-border-radius: var(--yw-radius-md);
+  border-radius: var(--yw-radius-md);
+  outline: none;
+  -webkit-transition:
+    border-color var(--yw-duration-2) var(--yw-ease),
+    -webkit-box-shadow var(--yw-duration-2) var(--yw-ease);
+  -o-transition:
+    border-color var(--yw-duration-2) var(--yw-ease),
+    box-shadow var(--yw-duration-2) var(--yw-ease);
+  transition:
+    border-color var(--yw-duration-2) var(--yw-ease),
+    box-shadow var(--yw-duration-2) var(--yw-ease),
+    -webkit-box-shadow var(--yw-duration-2) var(--yw-ease);
+}
+
+.input:focus {
+  border-color: var(--color-yw-green);
+  -webkit-box-shadow: 0 0 0 3px rgba(0, 200, 83, 0.18);
+  box-shadow: 0 0 0 3px rgba(0, 200, 83, 0.18);
+}
+
+.input::-webkit-input-placeholder {
+  color: var(--color-yw-text-hint);
+}
+.input:-ms-input-placeholder {
+  color: var(--color-yw-text-hint);
+}
+.input::placeholder {
+  color: var(--color-yw-text-hint);
+}
+
+/* ============================================================
+   8. BADGE & TAG COMPONENTS
+   ============================================================ */
+
+.badge {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  -webkit-border-radius: var(--yw-radius-full);
+  border-radius: var(--yw-radius-full);
+  letter-spacing: 0.04em;
+}
+
+.badge-green {
+  background: var(--yw-gradient-soft);
+  color: var(--color-yw-green-deep);
+  border: 1px solid rgba(0, 200, 83, 0.22);
+}
+
+.badge-white {
+  background: var(--color-yw-white);
+  color: var(--color-yw-text-green);
+  border: 1.5px solid rgba(0, 200, 83, 0.3);
+}
+
+.badge-warning {
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid rgba(255, 179, 0, 0.25);
+}
+
+.badge-info {
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid rgba(41, 182, 246, 0.25);
+}
+
+.badge-danger {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid rgba(239, 83, 80, 0.2);
+}
+
+/* ============================================================
+   9. GRADIENT TEXT UTILITY
+   ============================================================ */
+
+.text-gradient {
+  background: var(--yw-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ============================================================
+   10. BASE LINK STYLING
+   ============================================================ */
+
 a {
-  color: var(--yw-green);
+  color: var(--color-yw-green);
   text-decoration: none;
+  -webkit-transition: color var(--yw-duration-2) var(--yw-ease);
+  -o-transition: color var(--yw-duration-2) var(--yw-ease);
   transition: color var(--yw-duration-2) var(--yw-ease);
 }
 
 a:hover {
-  color: var(--yw-green-light);
+  color: var(--color-yw-green-mid);
 }
 
 /* ============================================================
-   7. SCROLLBAR
+   11. SCROLLBAR
    ============================================================ */
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
-
 ::-webkit-scrollbar-track {
-  background: var(--yw-black-soft);
+  background: var(--color-yw-off-white);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--yw-green-dark);
+  background: rgba(0, 200, 83, 0.35);
+  -webkit-border-radius: var(--yw-radius-full);
   border-radius: var(--yw-radius-full);
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--yw-green);
+  background: var(--color-yw-green);
 }
 
 ::selection {
-  background: var(--yw-green);
-  color: var(--yw-text-inverse);
+  background: var(--color-yw-green);
+  color: var(--color-yw-text-inverse);
 }
 
 :focus-visible {
-  outline: 2px solid var(--yw-green);
+  outline: 2px solid var(--color-yw-green);
   outline-offset: 3px;
+  -webkit-border-radius: var(--yw-radius-sm);
   border-radius: var(--yw-radius-sm);
 }
+
+/* ============================================================
+   12. DIVIDER
+   ============================================================ */
+
+.divider {
+  height: 1px;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(transparent),
+    color-stop(30%, rgba(0, 200, 83, 0.2)),
+    color-stop(70%, rgba(0, 200, 83, 0.2)),
+    to(transparent)
+  );
+  background: -webkit-linear-gradient(
+    left,
+    transparent,
+    rgba(0, 200, 83, 0.2) 30%,
+    rgba(0, 200, 83, 0.2) 70%,
+    transparent
+  );
+  background: -o-linear-gradient(
+    left,
+    transparent,
+    rgba(0, 200, 83, 0.2) 30%,
+    rgba(0, 200, 83, 0.2) 70%,
+    transparent
+  );
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 200, 83, 0.2) 30%,
+    rgba(0, 200, 83, 0.2) 70%,
+    transparent
+  );
+  border: none;
+  margin: 1.75rem 0;
+}
+
+/* ============================================================
+   13. TAILWIND v4 THEME EXTENSION
+       (exposes tokens as Tailwind utilities)
+   ============================================================ */
+
+@theme {
+  /* Colors */
+  --color-yw-green: #00c853;
+  --color-yw-green-light: #69f0ae;
+  --color-yw-green-soft: #b9fbc0;
+  --color-yw-green-mid: #2e7d32;
+  --color-yw-green-dark: #1b5e20;
+  --color-yw-off-white: #f8fdf9;
+  --color-yw-white-tint: #e8fdf0;
+  --color-yw-text: #1a2e20;
+  --color-yw-text-muted: #6b7c6f;
+
+  /* Font families */
+  --font-heading:
+    'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Border radius */
+  --radius-yw-sm: 4px;
+  --radius-yw-md: 8px;
+  --radius-yw-lg: 12px;
+  --radius-yw-xl: 14px;
+  --radius-yw-full: 9999px;
+}
+
+/* ============================================================
+   14. REDUCED MOTION
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
+    -webkit-animation-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
     animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+    -o-transition-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
 }

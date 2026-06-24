@@ -22,12 +22,24 @@ export function generateStaticParams() {
   return blogs.map((b) => ({ slug: b.slug }))
 }
 
-/* ── Tag colours (mirrors listing page) ──────────────────────────────── */
-const tagColors: Record<string, string> = {
-  'App Guide': '#00c853',
-  'Login Guide': '#29b6f6',
-  Event: '#ffb300',
-  Updates: '#ab47bc',
+/* ── Tag colours ──────────────────────────────────────────────────────── */
+const tagStyles: Record<string, { pill: string; dot: string }> = {
+  'App Guide': {
+    pill: 'bg-[#00c853]/10 text-[#00c853] border border-[#00c853]/20',
+    dot: 'bg-[#00c853]',
+  },
+  'Login Guide': {
+    pill: 'bg-[#29b6f6]/10 text-[#29b6f6] border border-[#29b6f6]/20',
+    dot: 'bg-[#29b6f6]',
+  },
+  Event: {
+    pill: 'bg-[#ffb300]/10 text-[#ffb300] border border-[#ffb300]/20',
+    dot: 'bg-[#ffb300]',
+  },
+  Updates: {
+    pill: 'bg-[#ab47bc]/10 text-[#ab47bc] border border-[#ab47bc]/20',
+    dot: 'bg-[#ab47bc]',
+  },
 }
 
 /* ── Section renderer ────────────────────────────────────────────────── */
@@ -36,16 +48,7 @@ function RenderSection({ section }: { section: Section }) {
     /* Intro */
     case 'intro':
       return (
-        <p
-          style={{
-            fontSize: 17,
-            lineHeight: 1.85,
-            color: 'var(--color-yw-text-secondary)',
-            borderLeft: '3px solid var(--color-yw-green)',
-            paddingLeft: 20,
-            margin: '0 0 28px',
-          }}
-        >
+        <p className='text-[17px] leading-[1.85] text-[var(--color-yw-text-secondary)] border-l-[3px] border-[var(--color-yw-green)] pl-5 mb-7'>
           {section.text}
         </p>
       )
@@ -53,47 +56,22 @@ function RenderSection({ section }: { section: Section }) {
     /* Info table */
     case 'table':
       return (
-        <div
-          style={{
-            overflowX: 'auto',
-            margin: '0 0 32px',
-            borderRadius: 12,
-            border: '1px solid var(--color-yw-black-border)',
-          }}
-        >
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <div className='overflow-x-auto mb-8 rounded-xl border border-[var(--color-yw-white-border)]'>
+          <table className='w-full border-collapse'>
             <tbody>
               {section.rows.map(([label, value], i) => (
                 <tr
                   key={i}
-                  style={{
-                    background:
-                      i % 2 === 0
-                        ? 'var(--color-yw-black-card)'
-                        : 'transparent',
-                  }}
+                  className={
+                    i % 2 === 0
+                      ? 'bg-[var(--color-yw-white-tint)]'
+                      : 'bg-transparent'
+                  }
                 >
-                  <td
-                    style={{
-                      padding: '12px 18px',
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: 'var(--color-yw-green)',
-                      whiteSpace: 'nowrap',
-                      width: '38%',
-                      borderBottom: '1px solid var(--color-yw-black-border)',
-                    }}
-                  >
+                  <td className='px-[18px] py-3 text-[13px] font-semibold text-[var(--color-yw-green)] whitespace-nowrap w-[38%] border-b border-[var(--color-yw-white-border)]'>
                     {label}
                   </td>
-                  <td
-                    style={{
-                      padding: '12px 18px',
-                      fontSize: 13,
-                      color: 'var(--color-yw-text-primary)',
-                      borderBottom: '1px solid var(--color-yw-black-border)',
-                    }}
-                  >
+                  <td className='px-[18px] py-3 text-[13px] text-[var(--color-yw-text-primary)] border-b border-[var(--color-yw-white-border)]'>
                     {value}
                   </td>
                 </tr>
@@ -103,36 +81,18 @@ function RenderSection({ section }: { section: Section }) {
         </div>
       )
 
-    /* Headings */
+    /* Heading 2 */
     case 'heading2':
       return (
-        <h2
-          style={{
-            fontFamily: 'var(--yw-font-heading)',
-            fontWeight: 700,
-            fontSize: 'clamp(1.25rem, 3vw, 1.55rem)',
-            color: 'var(--color-yw-white)',
-            margin: '40px 0 16px',
-            letterSpacing: '-0.01em',
-            lineHeight: 1.3,
-          }}
-        >
+        <h2 className='font-[var(--yw-font-heading)] font-bold text-[clamp(1.25rem,3vw,1.55rem)] text-[var(--color-yw-text-primary)] mt-10 mb-4 tracking-tight leading-[1.3]'>
           {section.text}
         </h2>
       )
 
+    /* Heading 3 */
     case 'heading3':
       return (
-        <h3
-          style={{
-            fontFamily: 'var(--yw-font-heading)',
-            fontWeight: 600,
-            fontSize: 'clamp(1rem, 2.5vw, 1.15rem)',
-            color: 'var(--color-yw-white)',
-            margin: '28px 0 12px',
-            letterSpacing: '-0.01em',
-          }}
-        >
+        <h3 className='font-[var(--yw-font-heading)] font-semibold text-[clamp(1rem,2.5vw,1.15rem)] text-[var(--color-yw-text-primary)] mt-7 mb-3 tracking-tight'>
           {section.text}
         </h3>
       )
@@ -140,14 +100,7 @@ function RenderSection({ section }: { section: Section }) {
     /* Paragraph */
     case 'paragraph':
       return (
-        <p
-          style={{
-            fontSize: 15,
-            lineHeight: 1.85,
-            color: 'var(--color-yw-text-secondary)',
-            margin: '0 0 24px',
-          }}
-        >
+        <p className='text-[15px] leading-[1.85] text-[var(--color-yw-text-secondary)] mb-6'>
           {section.text}
         </p>
       )
@@ -155,48 +108,13 @@ function RenderSection({ section }: { section: Section }) {
     /* Numbered steps */
     case 'steps':
       return (
-        <ol
-          style={{
-            listStyle: 'none',
-            padding: 0,
-            margin: '0 0 28px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 10,
-          }}
-        >
+        <ol className='list-none p-0 mb-7 flex flex-col gap-[10px]'>
           {section.items.map((item, i) => (
             <li
               key={i}
-              style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: 14,
-                background: 'var(--color-yw-black-card)',
-                border: '1px solid var(--color-yw-black-border)',
-                borderRadius: 10,
-                padding: '12px 16px',
-                fontSize: 14,
-                color: 'var(--color-yw-text-secondary)',
-                lineHeight: 1.6,
-              }}
+              className='flex items-start gap-[14px] bg-[var(--color-yw-white-tint)] border border-[var(--color-yw-white-border)] rounded-[10px] px-4 py-3 text-[14px] text-[var(--color-yw-text-secondary)] leading-[1.6]'
             >
-              <span
-                style={{
-                  flexShrink: 0,
-                  width: 26,
-                  height: 26,
-                  borderRadius: '50%',
-                  background: 'rgba(0,200,83,0.12)',
-                  border: '1px solid rgba(0,200,83,0.35)',
-                  color: 'var(--color-yw-green)',
-                  fontSize: 12,
-                  fontWeight: 700,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
+              <span className='shrink-0 w-[26px] h-[26px] rounded-full bg-[rgba(0,200,83,0.12)] border border-[rgba(0,200,83,0.35)] text-[var(--color-yw-green)] text-[12px] font-bold flex items-center justify-center'>
                 {i + 1}
               </span>
               {item}
@@ -208,26 +126,13 @@ function RenderSection({ section }: { section: Section }) {
     /* Bullet list */
     case 'bullets':
       return (
-        <ul
-          style={{
-            listStyle: 'none',
-            padding: 0,
-            margin: '0 0 28px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 8,
-          }}
-        >
+        <ul className='list-none p-0 mb-7 flex flex-col gap-2'>
           {section.items.map((item, i) => (
             <li
               key={i}
-              style={{
-                fontSize: 14,
-                color: 'var(--color-yw-text-secondary)',
-                lineHeight: 1.7,
-                paddingLeft: 4,
-              }}
+              className='flex items-start gap-3 text-[14px] text-[var(--color-yw-text-secondary)] leading-[1.7] pl-1'
             >
+              <span className='mt-[7px] shrink-0 w-[6px] h-[6px] rounded-full bg-[var(--color-yw-green)] opacity-70' />
               {item}
             </li>
           ))}
@@ -237,30 +142,14 @@ function RenderSection({ section }: { section: Section }) {
     /* Prize table */
     case 'prize_table':
       return (
-        <div
-          style={{
-            overflowX: 'auto',
-            margin: '0 0 32px',
-            borderRadius: 12,
-            border: '1px solid var(--color-yw-black-border)',
-          }}
-        >
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <div className='overflow-x-auto mb-8 rounded-xl border border-[var(--color-yw-white-border)]'>
+          <table className='w-full border-collapse'>
             <thead>
-              <tr style={{ background: 'rgba(0,200,83,0.07)' }}>
+              <tr className='bg-[rgba(0,200,83,0.07)]'>
                 {['Rank', 'Prize', 'Value'].map((h) => (
                   <th
                     key={h}
-                    style={{
-                      padding: '12px 18px',
-                      fontSize: 12,
-                      fontWeight: 700,
-                      color: 'var(--color-yw-green)',
-                      textAlign: 'left',
-                      letterSpacing: '0.06em',
-                      textTransform: 'uppercase',
-                      borderBottom: '1px solid var(--color-yw-black-border)',
-                    }}
+                    className='px-[18px] py-3 text-[12px] font-bold text-[var(--color-yw-green)] text-left tracking-[0.06em] uppercase border-b border-[var(--color-yw-white-border)]'
                   >
                     {h}
                   </th>
@@ -271,44 +160,19 @@ function RenderSection({ section }: { section: Section }) {
               {section.rows.map((row, i) => (
                 <tr
                   key={i}
-                  style={{
-                    background:
-                      i % 2 === 0
-                        ? 'var(--color-yw-black-card)'
-                        : 'transparent',
-                  }}
+                  className={
+                    i % 2 === 0
+                      ? 'bg-[var(--color-yw-white-tint)]'
+                      : 'bg-transparent'
+                  }
                 >
-                  <td
-                    style={{
-                      padding: '12px 18px',
-                      fontSize: 13,
-                      color: 'var(--color-yw-text-primary)',
-                      borderBottom: '1px solid var(--color-yw-black-border)',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
+                  <td className='px-[18px] py-3 text-[13px] text-[var(--color-yw-text-primary)] border-b border-[var(--color-yw-white-border)] whitespace-nowrap'>
                     {row.rank}
                   </td>
-                  <td
-                    style={{
-                      padding: '12px 18px',
-                      fontSize: 13,
-                      color: 'var(--color-yw-text-secondary)',
-                      borderBottom: '1px solid var(--color-yw-black-border)',
-                    }}
-                  >
+                  <td className='px-[18px] py-3 text-[13px] text-[var(--color-yw-text-secondary)] border-b border-[var(--color-yw-white-border)]'>
                     {row.prize}
                   </td>
-                  <td
-                    style={{
-                      padding: '12px 18px',
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: 'var(--color-yw-green)',
-                      borderBottom: '1px solid var(--color-yw-black-border)',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
+                  <td className='px-[18px] py-3 text-[13px] font-semibold text-[var(--color-yw-green)] border-b border-[var(--color-yw-white-border)] whitespace-nowrap'>
                     {row.value}
                   </td>
                 </tr>
@@ -321,18 +185,7 @@ function RenderSection({ section }: { section: Section }) {
     /* Note / callout */
     case 'note':
       return (
-        <div
-          style={{
-            background: 'rgba(255,179,0,0.06)',
-            border: '1px solid rgba(255,179,0,0.25)',
-            borderRadius: 10,
-            padding: '14px 18px',
-            margin: '0 0 28px',
-            fontSize: 13,
-            color: '#ffca28',
-            lineHeight: 1.7,
-          }}
-        >
+        <div className='bg-[rgba(255,179,0,0.06)] border border-[rgba(255,179,0,0.25)] rounded-[10px] px-[18px] py-[14px] mb-7 text-[13px] text-[#ffb300] leading-[1.7]'>
           ⚠️ {section.text}
         </div>
       )
@@ -340,84 +193,34 @@ function RenderSection({ section }: { section: Section }) {
     /* CTA button */
     case 'cta':
       return (
-        <div style={{ margin: '36px 0', textAlign: 'center' }}>
+        <div className='my-9 text-center'>
           <a
             href={section.href}
             target='_blank'
             rel='noopener noreferrer'
-            style={{
-              display: 'inline-block',
-              padding: '14px 32px',
-              borderRadius: 999,
-              background: 'var(--color-yw-green)',
-              color: '#000',
-              fontWeight: 700,
-              fontSize: 15,
-              textDecoration: 'none',
-              letterSpacing: '0.01em',
-              boxShadow: '0 0 24px rgba(0,200,83,0.3)',
-              transition: 'opacity 0.2s',
-            }}
+            className='inline-block px-8 py-3.5 rounded-full bg-[#00c853] text-white! font-bold text-[15px] no-underline tracking-[0.01em] shadow-[0_0_24px_rgba(0,200,83,0.3)] transition-opacity duration-200 hover:opacity-90'
           >
             {section.label}
           </a>
         </div>
       )
 
-    /* FAQ accordion (static) */
+    /* FAQ accordion */
     case 'faq':
       return (
-        <div
-          style={{
-            margin: '0 0 32px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 10,
-          }}
-        >
+        <div className='mb-8 flex flex-col gap-[10px]'>
           {section.items.map((item, i) => (
             <details
               key={i}
-              style={{
-                background: 'var(--color-yw-black-card)',
-                border: '1px solid var(--color-yw-black-border)',
-                borderRadius: 10,
-                padding: '14px 18px',
-              }}
+              className='bg-[var(--color-yw-white-tint)] border border-[var(--color-yw-white-border)] rounded-[10px] px-[18px] py-[14px] group'
             >
-              <summary
-                style={{
-                  fontSize: 14,
-                  fontWeight: 600,
-                  color: 'var(--color-yw-white)',
-                  cursor: 'pointer',
-                  listStyle: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: 12,
-                }}
-              >
+              <summary className='text-[14px] font-semibold text-[var(--color-yw-text-primary)] cursor-pointer list-none flex items-center justify-between gap-3'>
                 {item.q}
-                <span
-                  style={{
-                    flexShrink: 0,
-                    color: 'var(--color-yw-green)',
-                    fontSize: 18,
-                    lineHeight: 1,
-                  }}
-                >
+                <span className='shrink-0 text-[var(--color-yw-green)] text-[18px] leading-none'>
                   +
                 </span>
               </summary>
-              <p
-                style={{
-                  margin: '12px 0 0',
-                  fontSize: 13,
-                  lineHeight: 1.75,
-                  color: 'var(--color-yw-text-secondary)',
-                }}
-              >
+              <p className='mt-3 mb-0 text-[13px] leading-[1.75] text-[var(--color-yw-text-secondary)]'>
                 {item.a}
               </p>
             </details>
@@ -428,47 +231,17 @@ function RenderSection({ section }: { section: Section }) {
     /* Feature grid */
     case 'feature_grid':
       return (
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-            gap: 16,
-            margin: '0 0 32px',
-          }}
-        >
+        <div className='grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-4 mb-8'>
           {section.items.map((item, i) => (
             <div
               key={i}
-              style={{
-                background: 'var(--color-yw-black-card)',
-                border: '1px solid var(--color-yw-black-border)',
-                borderRadius: 12,
-                padding: '20px 18px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 8,
-              }}
+              className='bg-[var(--color-yw-white-tint)] border border-[var(--color-yw-white-border)] rounded-xl px-[18px] py-5 flex flex-col gap-2 transition-shadow duration-300 hover:shadow-[var(--yw-shadow-card-hover)]'
             >
-              <span style={{ fontSize: 28 }}>{item.icon}</span>
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: 14,
-                  fontWeight: 600,
-                  color: 'var(--color-yw-white)',
-                  lineHeight: 1.3,
-                }}
-              >
+              <span className='text-[28px]'>{item.icon}</span>
+              <p className='m-0 text-[14px] font-semibold text-[var(--color-yw-text-primary)] leading-[1.3]'>
                 {item.title}
               </p>
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: 12,
-                  color: 'var(--color-yw-text-secondary)',
-                  lineHeight: 1.65,
-                }}
-              >
+              <p className='m-0 text-[12px] text-[var(--color-yw-text-secondary)] leading-[1.65]'>
                 {item.desc}
               </p>
             </div>
@@ -491,159 +264,74 @@ export default async function BlogPostPage({
   const blog = getBlogBySlug(slug)
   if (!blog) notFound()
 
-  const accentColor = tagColors[blog.tag] || 'var(--color-yw-green)'
+  const tag = tagStyles[blog.tag] ?? tagStyles['App Guide']
 
   return (
-    <div
-      style={{
-        fontFamily: 'var(--yw-font-body)',
-        color: 'var(--color-yw-text-primary)',
-        background: 'var(--color-yw-black)',
-      }}
-    >
+    <div className='font-[var(--yw-font-body)] text-[var(--color-yw-text-primary)] bg-[var(--color-yw-off-white)] min-h-screen'>
       {/* ── Hero ── */}
-      <section
-        style={{
-          padding: '140px 24px 64px',
-          background: `radial-gradient(ellipse 70% 50% at 50% 0%, ${accentColor}18 0%, transparent 70%), var(--color-yw-black)`,
-        }}
-      >
-        <div style={{ maxWidth: 760, margin: '0 auto' }}>
+      <section className='pt-[140px] pb-16 px-6 bg-[var(--color-yw-off-white)]'>
+        {/* subtle green radial glow at top */}
+        <div className='absolute inset-x-0 top-0 h-[420px] pointer-events-none bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(0,200,83,0.1)_0%,transparent_70%)]' />
+
+        <div className='relative max-w-[760px] mx-auto'>
           {/* Breadcrumb */}
-          <nav
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              marginBottom: 28,
-              fontSize: 13,
-              color: 'var(--color-yw-text-muted)',
-            }}
-          >
+          <nav className='flex items-center gap-1.5 mb-7 text-[13px] text-[var(--color-yw-text-muted)]'>
             <Link
               href='/'
-              style={{
-                color: 'var(--color-yw-text-muted)',
-                textDecoration: 'none',
-              }}
+              className='text-[var(--color-yw-text-muted)] hover:text-[var(--color-yw-green)] transition-colors duration-200 no-underline'
             >
               Home
             </Link>
-            <span>›</span>
+            <span className='opacity-50'>›</span>
             <Link
               href='/blogs'
-              style={{
-                color: 'var(--color-yw-text-muted)',
-                textDecoration: 'none',
-              }}
+              className='text-[var(--color-yw-text-muted)] hover:text-[var(--color-yw-green)] transition-colors duration-200 no-underline'
             >
               Blogs
             </Link>
-            <span>›</span>
-            <span
-              style={{
-                color: 'var(--color-yw-text-secondary)',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                maxWidth: 200,
-              }}
-            >
+            <span className='opacity-50'>›</span>
+            <span className='text-[var(--color-yw-text-secondary)] overflow-hidden text-ellipsis whitespace-nowrap max-w-[200px]'>
               {blog.title}
             </span>
           </nav>
 
-          {/* Tag + meta */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 12,
-              marginBottom: 20,
-              flexWrap: 'wrap',
-            }}
-          >
+          {/* Tag + meta row */}
+          <div className='flex items-center gap-3 mb-5 flex-wrap'>
             <span
-              style={{
-                display: 'inline-block',
-                padding: '4px 12px',
-                borderRadius: 999,
-                fontSize: 11,
-                fontWeight: 600,
-                letterSpacing: '0.04em',
-                background: `${accentColor}18`,
-                color: accentColor,
-                border: `1px solid ${accentColor}35`,
-              }}
+              className={`inline-block px-3 py-[3px] rounded-full text-[11px] font-semibold tracking-[0.04em] ${tag.pill}`}
             >
               {blog.tag}
             </span>
-            <span
-              style={{
-                fontSize: 12,
-                color: 'var(--color-yw-text-muted)',
-              }}
-            >
+            <span className='text-[12px] text-[var(--color-yw-text-muted)]'>
               {blog.date}
             </span>
-            <span
-              style={{
-                fontSize: 12,
-                color: 'var(--color-yw-text-muted)',
-              }}
-            >
+            <span className='text-[12px] text-[var(--color-yw-text-muted)]'>
               · {blog.readTime}
             </span>
           </div>
 
           {/* Title */}
-          <h1
-            style={{
-              fontFamily: 'var(--yw-font-heading)',
-              fontWeight: 800,
-              fontSize: 'clamp(1.6rem, 4vw, 2.4rem)',
-              lineHeight: 1.2,
-              color: 'var(--color-yw-white)',
-              margin: 0,
-              letterSpacing: '-0.02em',
-            }}
-          >
+          <h1 className='font-[var(--yw-font-heading)] font-extrabold text-[clamp(1.6rem,4vw,2.4rem)] leading-[1.2] text-[var(--color-yw-text-primary)] m-0 tracking-[-0.02em]'>
             {blog.title}
           </h1>
         </div>
       </section>
 
+      {/* ── Divider strip ── */}
+      <div className='h-px bg-gradient-to-r from-transparent via-[rgba(0,200,83,0.25)] to-transparent' />
+
       {/* ── Content ── */}
-      <section
-        style={{
-          padding: '56px 24px 100px',
-          background: 'var(--color-yw-black-soft)',
-        }}
-      >
-        <div style={{ maxWidth: 760, margin: '0 auto' }}>
+      <section className='py-14 px-6 pb-24 bg-[var(--color-yw-white)]'>
+        <div className='max-w-[760px] mx-auto'>
           {blog.sections.map((section, i) => (
             <RenderSection key={i} section={section} />
           ))}
 
           {/* Back link */}
-          <div
-            style={{
-              marginTop: 56,
-              paddingTop: 28,
-              borderTop: '1px solid var(--color-yw-black-border)',
-            }}
-          >
+          <div className='mt-14 pt-7 border-t border-[var(--color-yw-white-border)]'>
             <Link
               href='/blogs'
-              style={{
-                fontSize: 14,
-                color: 'var(--color-yw-green)',
-                textDecoration: 'none',
-                fontWeight: 600,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 6,
-              }}
+              className='text-[14px] text-[var(--color-yw-green)] no-underline font-semibold inline-flex items-center gap-1.5 hover:text-[var(--color-yw-green-mid)] transition-colors duration-200'
             >
               ← Back to All Blogs
             </Link>

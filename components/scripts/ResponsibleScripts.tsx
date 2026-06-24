@@ -1,259 +1,143 @@
 'use client'
 
 import Link from 'next/link'
-import { responsibleGamingMetadata } from '@/lib/seo/metadata'
-export const metadata = responsibleGamingMetadata
 
 const guidelines = [
   {
     icon: '💰',
     title: 'Set a Budget Before Playing',
-    desc: 'Always decide your spending limit before you start playing. Do not exceed your budget under any condition. Treat gaming as entertainment, not an investment.',
+    desc: 'Decide on a fixed spending limit before you begin any gaming session. Stick to it no matter what. Think of gaming as a leisure activity, not a financial strategy.',
   },
   {
     icon: '⏱️',
     title: 'Manage Your Playing Time',
-    desc: 'Avoid spending long hours continuously on YaarWin Game. Take regular breaks and keep gaming balanced with your daily routine and responsibilities.',
+    desc: 'Do not play for long, uninterrupted stretches on YaarWin Game. Take regular breaks and make sure gaming fits around your daily responsibilities — not the other way around.',
   },
   {
     icon: '🎉',
     title: 'Play for Entertainment Only',
-    desc: 'Use YaarWin Game for fun and entertainment. Do not treat it as a fixed income source or guaranteed earning method — winnings are never guaranteed.',
+    desc: 'YaarWin Game is a form of entertainment. Do not rely on it as a steady income or a guaranteed way to earn money — outcomes are never certain.',
   },
   {
     icon: '🚫',
     title: 'Do Not Chase Losses',
-    desc: 'Never increase your playing amount just to recover previous losses. Chasing losses can increase financial risk significantly and lead to further setbacks.',
+    desc: 'Increasing your bets to win back money you have already lost is a dangerous habit. It raises your financial risk and rarely leads to recovery.',
   },
   {
     icon: '🧘',
     title: 'Stay Emotionally Balanced',
-    desc: 'Avoid playing when you are angry, stressed, tired, or emotionally disturbed. A calm and clear mindset helps you make better decisions while playing.',
+    desc: 'Gaming while angry, tired, or emotionally unstable leads to poor choices. Always play with a calm and focused state of mind.',
   },
   {
     icon: '🔐',
     title: 'Keep Your Account Secure',
-    desc: 'Do not share your mobile number, password, OTP, or account details with anyone. Always keep your login information private and use strong passwords.',
+    desc: 'Never share your phone number, password, OTP, or any account credentials with anyone. Your login details should always remain private.',
   },
   {
     icon: '🔞',
     title: 'Follow Age Restrictions',
-    desc: 'YaarWin Game is strictly intended for users aged 18 years or above. Underage users should not register or participate in any gaming activities.',
+    desc: 'YaarWin Game is only for users who are 18 years of age or older. Anyone below this age must not create an account or take part in any gaming activity.',
   },
 ]
 
 const breakSigns = [
-  'You are spending more than your planned budget',
-  'You are playing for too many hours continuously',
-  'You feel stress, pressure, or frustration while playing',
-  'You are trying to recover losses quickly by increasing bets',
-  'Gaming is affecting your studies, work, or personal life',
-  'You feel compelled to play even when you do not want to',
+  'Your spending has gone beyond what you originally planned',
+  'You have been playing non-stop for many hours',
+  'You are feeling stressed, anxious, or frustrated while playing',
+  'You are placing larger bets in an attempt to recover past losses',
+  'Gaming is starting to interfere with work, studies, or personal relationships',
+  'You feel a strong urge to play even when you would rather not',
 ]
 
 const safeTips = [
-  'Start with a small amount',
-  'Set daily or weekly spending limits',
-  'Never borrow money to play',
-  'Do not share your account with others',
-  'Avoid playing continuously for long sessions',
-  'Stop immediately if gaming feels stressful',
+  'Begin with a small, comfortable amount',
+  'Set a daily or weekly limit and stick to it',
+  'Never use borrowed money for gaming',
+  'Keep your account to yourself — do not share access',
+  'Avoid back-to-back sessions without breaks',
+  'Step away immediately if playing starts feeling like a burden',
 ]
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <span className='text-[11px] font-semibold tracking-[0.1em] uppercase text-[var(--color-yw-green)]'>
+      {children}
+    </span>
+  )
+}
 
 export default function ResponsibleScripts() {
   return (
-    <div
-      style={{
-        fontFamily: 'var(--yw-font-body)',
-        color: 'var(--color-yw-text-primary)',
-        background: 'var(--color-yw-black)',
-      }}
-    >
-      {/* Hero */}
-      <section
-        style={{
-          padding: '140px 24px 80px',
-          background:
-            'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,200,83,0.1) 0%, transparent 70%), var(--color-yw-black)',
-        }}
-      >
-        <div style={{ maxWidth: 760, margin: '0 auto', textAlign: 'center' }}>
-          <span
-            style={{
-              fontSize: 12,
-              color: 'var(--color-yw-green)',
-              fontWeight: 600,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Play Smart
-          </span>
-          <h1
-            style={{
-              fontFamily: 'var(--yw-font-heading)',
-              fontWeight: 800,
-              fontSize: 'clamp(2rem, 5vw, 3rem)',
-              lineHeight: 1.2,
-              color: 'var(--color-yw-white)',
-              marginTop: 12,
-              marginBottom: 20,
-              letterSpacing: '-0.02em',
-            }}
-          >
-            Responsible Gaming on{' '}
-            <span style={{ color: 'var(--color-yw-green)' }}>YaarWin</span>
+    <div className='font-[var(--yw-font-body)] text-[var(--color-yw-text-primary)] bg-[var(--color-yw-off-white)] overflow-x-hidden'>
+      {/* ══════════════ HERO ══════════════ */}
+      <section className='pt-[140px] pb-20 px-6 relative overflow-hidden bg-[var(--color-yw-off-white)]'>
+        <div
+          aria-hidden
+          className='absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(0,200,83,0.1)_0%,transparent_70%)]'
+        />
+        <div
+          aria-hidden
+          className='absolute inset-0 pointer-events-none [background-image:radial-gradient(circle,rgba(0,200,83,0.07)_1px,transparent_1px)] [background-size:40px_40px]'
+        />
+
+        <div className='max-w-[760px] mx-auto text-center relative animate-fade-in-up'>
+          <SectionLabel>Play Smart</SectionLabel>
+          <h1 className='font-[var(--yw-font-heading)] font-extrabold text-[clamp(2rem,5vw,3rem)] leading-[1.2] text-[var(--color-yw-text-primary)] mt-3 mb-5 tracking-tight'>
+            Responsible Gaming on <span className='text-gradient'>YaarWin</span>
           </h1>
-          <p
-            style={{
-              fontSize: 16,
-              color: 'var(--color-yw-text-secondary)',
-              lineHeight: 1.8,
-              maxWidth: 580,
-              margin: '0 auto',
-            }}
-          >
-            Playing on YaarWin Game should always be safe, controlled, and
-            enjoyable. Online gaming can be entertaining, but it is important to
-            play with responsibility, manage your time, and never take
-            unnecessary financial risks.
+          <p className='text-[15px] text-[var(--color-yw-text-secondary)] leading-[1.8] max-w-[580px] mx-auto'>
+            Your experience on YaarWin Game should always be enjoyable, safe,
+            and within your control. While online gaming can be a fun activity,
+            it is essential to play wisely, manage your time well, and avoid
+            putting yourself under unnecessary financial pressure.
           </p>
         </div>
       </section>
 
-      {/* What is Responsible Gaming */}
-      <section
-        style={{
-          padding: '80px 24px',
-          background: 'var(--color-yw-black-soft)',
-        }}
-      >
-        <div style={{ maxWidth: 860, margin: '0 auto' }}>
-          <div
-            style={{
-              background: 'var(--color-yw-black-card)',
-              border: '1px solid rgba(0,200,83,0.2)',
-              borderRadius: 20,
-              padding: '36px 40px',
-            }}
-          >
-            <h2
-              style={{
-                fontFamily: 'var(--yw-font-heading)',
-                fontWeight: 700,
-                fontSize: 22,
-                color: 'var(--color-yw-white)',
-                marginBottom: 16,
-              }}
-            >
+      {/* ══════════════ WHAT IS RESPONSIBLE GAMING ══════════════ */}
+      <section className='py-20 px-6 bg-[var(--color-yw-white)]'>
+        <div className='max-w-[860px] mx-auto'>
+          <div className='rounded-[20px] px-8 sm:px-10 py-9 animate-fade-in-up bg-[var(--color-yw-white-card)] border border-[rgba(0,200,83,0.2)] shadow-[var(--yw-shadow-card)]'>
+            <h2 className='font-[var(--yw-font-heading)] font-bold text-xl text-[var(--color-yw-text-primary)] mb-4'>
               🧠 What is Responsible Gaming?
             </h2>
-            <p
-              style={{
-                fontSize: 15,
-                color: 'var(--color-yw-text-secondary)',
-                lineHeight: 1.8,
-                marginBottom: 16,
-              }}
-            >
-              Responsible gaming means playing in a safe and balanced way. It
-              includes setting limits, understanding risk, avoiding emotional
-              decisions, and knowing when to stop.
+            <p className='text-[15px] text-[var(--color-yw-text-muted)] leading-[1.8] mb-4'>
+              Responsible gaming means approaching online games in a thoughtful,
+              measured way. It involves knowing your limits, understanding that
+              outcomes involve chance, keeping emotions in check, and
+              recognising when it is time to walk away.
             </p>
-            <p
-              style={{
-                fontSize: 15,
-                color: 'var(--color-yw-text-secondary)',
-                lineHeight: 1.8,
-              }}
-            >
-              Every user should play with a clear mind and only use money they
-              can comfortably afford to lose. At YaarWin Game, users should
-              treat gaming as a form of entertainment — not as a guaranteed
-              source of income.
+            <p className='text-[15px] text-[var(--color-yw-text-muted)] leading-[1.8]'>
+              Only play with money you are genuinely comfortable losing, and
+              always approach YaarWin Game as a source of entertainment — not as
+              a reliable way to make money.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Guidelines */}
-      <section
-        style={{ padding: '80px 24px', background: 'var(--color-yw-black)' }}
-      >
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <span
-              style={{
-                fontSize: 12,
-                color: 'var(--color-yw-green)',
-                fontWeight: 600,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-              }}
-            >
-              Guidelines
-            </span>
-            <h2
-              style={{
-                fontFamily: 'var(--yw-font-heading)',
-                fontWeight: 700,
-                fontSize: 'clamp(1.5rem,3vw,2.2rem)',
-                color: 'var(--color-yw-white)',
-                marginTop: 8,
-                letterSpacing: '-0.02em',
-              }}
-            >
+      {/* ══════════════ GUIDELINES ══════════════ */}
+      <section className='py-24 px-6 bg-[var(--color-yw-off-white)]'>
+        <div className='max-w-[1100px] mx-auto'>
+          <div className='text-center mb-12'>
+            <SectionLabel>Guidelines</SectionLabel>
+            <h2 className='font-[var(--yw-font-heading)] font-bold text-[clamp(1.5rem,3vw,2.2rem)] text-[var(--color-yw-text-primary)] mt-2 tracking-tight'>
               Responsible Gaming Guidelines
             </h2>
           </div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))',
-              gap: 20,
-            }}
-          >
-            {guidelines.map(({ icon, title, desc }) => (
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
+            {guidelines.map(({ icon, title, desc }, i) => (
               <div
                 key={title}
-                style={{
-                  background: 'var(--color-yw-black-card)',
-                  border: '1px solid var(--color-yw-black-border)',
-                  borderRadius: 14,
-                  padding: '24px 22px',
-                  transition: 'border-color 0.25s, transform 0.25s',
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'rgba(0,200,83,0.3)'
-                  el.style.transform = 'translateY(-4px)'
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'var(--color-yw-black-border)'
-                  el.style.transform = 'none'
-                }}
+                className='card card-hover animate-fade-in-up'
+                style={{ animationDelay: `${i * 60}ms` }}
               >
-                <div style={{ fontSize: 30, marginBottom: 12 }}>{icon}</div>
-                <h3
-                  style={{
-                    fontFamily: 'var(--yw-font-heading)',
-                    fontWeight: 600,
-                    fontSize: 15,
-                    color: 'var(--color-yw-white)',
-                    marginBottom: 8,
-                  }}
-                >
+                <div className='text-[30px] mb-3'>{icon}</div>
+                <h3 className='font-[var(--yw-font-heading)] font-semibold text-[15px] text-[var(--color-yw-text-primary)] mb-2'>
                   {title}
                 </h3>
-                <p
-                  style={{
-                    fontSize: 13,
-                    color: 'var(--color-yw-text-secondary)',
-                    lineHeight: 1.7,
-                  }}
-                >
+                <p className='text-[13px] text-[var(--color-yw-text-muted)] leading-[1.7]'>
                   {desc}
                 </p>
               </div>
@@ -262,103 +146,40 @@ export default function ResponsibleScripts() {
         </div>
       </section>
 
-      {/* Signs + Safe Tips */}
-      <section
-        style={{
-          padding: '80px 24px',
-          background: 'var(--color-yw-black-soft)',
-        }}
-      >
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))',
-              gap: 32,
-            }}
-          >
-            {/* Signs */}
-            <div
-              style={{
-                background: 'rgba(239,83,80,0.06)',
-                border: '1px solid rgba(239,83,80,0.2)',
-                borderRadius: 16,
-                padding: 28,
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: 'var(--yw-font-heading)',
-                  fontWeight: 700,
-                  fontSize: 18,
-                  color: '#ef5350',
-                  marginBottom: 20,
-                }}
-              >
+      {/* ══════════════ SIGNS + SAFE TIPS ══════════════ */}
+      <section className='py-24 px-6 bg-[var(--color-yw-white)]'>
+        <div className='max-w-[1100px] mx-auto'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+            {/* Break signs */}
+            <div className='rounded-2xl p-7 animate-slide-left bg-[rgba(239,83,80,0.06)] border border-[rgba(239,83,80,0.2)]'>
+              <h3 className='font-[var(--yw-font-heading)] font-bold text-lg text-[#ef5350] mb-5'>
                 🚨 Signs You Should Take a Break
               </h3>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <ul className='flex flex-col gap-3'>
                 {breakSigns.map((sign, i) => (
                   <li
                     key={i}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: 10,
-                      fontSize: 13,
-                      color: 'var(--color-yw-text-secondary)',
-                    }}
+                    className='flex items-start gap-2.5 text-[13px] text-[var(--color-yw-text-muted)]'
                   >
-                    <span
-                      style={{ color: '#ef5350', flexShrink: 0, marginTop: 1 }}
-                    >
-                      ✗
-                    </span>
+                    <span className='text-[#ef5350] shrink-0 mt-0.5'>✗</span>
                     {sign}
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Safe Tips */}
-            <div
-              style={{
-                background: 'rgba(0,200,83,0.06)',
-                border: '1px solid rgba(0,200,83,0.2)',
-                borderRadius: 16,
-                padding: 28,
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: 'var(--yw-font-heading)',
-                  fontWeight: 700,
-                  fontSize: 18,
-                  color: 'var(--color-yw-green)',
-                  marginBottom: 20,
-                }}
-              >
+            {/* Safe tips */}
+            <div className='rounded-2xl p-7 animate-slide-right bg-[rgba(0,200,83,0.06)] border border-[rgba(0,200,83,0.2)]'>
+              <h3 className='font-[var(--yw-font-heading)] font-bold text-lg text-[var(--color-yw-green)] mb-5'>
                 ✅ Safe Gaming Tips
               </h3>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <ul className='flex flex-col gap-3'>
                 {safeTips.map((tip, i) => (
                   <li
                     key={i}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: 10,
-                      fontSize: 13,
-                      color: 'var(--color-yw-text-secondary)',
-                    }}
+                    className='flex items-start gap-2.5 text-[13px] text-[var(--color-yw-text-muted)]'
                   >
-                    <span
-                      style={{
-                        color: 'var(--color-yw-green)',
-                        flexShrink: 0,
-                        marginTop: 1,
-                      }}
-                    >
+                    <span className='text-[var(--color-yw-green)] shrink-0 mt-0.5'>
                       ✓
                     </span>
                     {tip}
@@ -370,92 +191,37 @@ export default function ResponsibleScripts() {
         </div>
       </section>
 
-      {/* Disclaimer */}
-      <section
-        style={{ padding: '64px 24px', background: 'var(--color-yw-black)' }}
-      >
-        <div style={{ maxWidth: 860, margin: '0 auto' }}>
-          <div
-            style={{
-              background: 'rgba(255,179,0,0.06)',
-              border: '1px solid rgba(255,179,0,0.2)',
-              borderRadius: 16,
-              padding: '28px 32px',
-              marginBottom: 32,
-            }}
-          >
-            <h3
-              style={{
-                fontFamily: 'var(--yw-font-heading)',
-                fontWeight: 600,
-                fontSize: 14,
-                color: 'var(--color-yw-warning)',
-                marginBottom: 12,
-                textTransform: 'uppercase',
-                letterSpacing: '0.06em',
-              }}
-            >
+      {/* ══════════════ DISCLAIMER + FINAL WORDS ══════════════ */}
+      <section className='py-20 px-6 bg-[var(--color-yw-off-white)]'>
+        <div className='max-w-[860px] mx-auto'>
+          {/* Disclaimer */}
+          <div className='rounded-2xl px-8 py-7 mb-8 animate-fade-in-up bg-[rgba(255,179,0,0.06)] border border-[rgba(255,179,0,0.2)]'>
+            <h3 className='font-[var(--yw-font-heading)] font-semibold text-sm uppercase tracking-wider text-[var(--color-yw-warning)] mb-3'>
               ⚠️ Important Disclaimer
             </h3>
-            <p
-              style={{
-                fontSize: 14,
-                color: 'var(--color-yw-text-secondary)',
-                lineHeight: 1.8,
-              }}
-            >
-              YaarWin Game involves an element of skill and chance.
-              Participation carries financial risk. Users must be 18 years or
-              older. Excessive gaming can be harmful — set your limits and play
-              responsibly at all times. If gaming is impacting your mental
-              health, financial situation, or personal relationships, please
-              seek professional support immediately.
+            <p className='text-sm text-[var(--color-yw-text-muted)] leading-[1.8]'>
+              YaarWin Game combines elements of both skill and chance, and all
+              participation carries a degree of financial risk. You must be at
+              least 18 years old to use this platform. Excessive gaming can
+              negatively affect your wellbeing — always play within set limits
+              and act responsibly. If gaming is having a negative impact on your
+              mental health, finances, or relationships, please reach out to a
+              professional for support.
             </p>
           </div>
 
-          <div
-            style={{
-              background: 'rgba(0,200,83,0.05)',
-              border: '1px solid rgba(0,200,83,0.15)',
-              borderRadius: 16,
-              padding: '28px 32px',
-            }}
-          >
-            <h3
-              style={{
-                fontFamily: 'var(--yw-font-heading)',
-                fontWeight: 700,
-                fontSize: 18,
-                color: 'var(--color-yw-white)',
-                marginBottom: 12,
-              }}
-            >
+          {/* Final words */}
+          <div className='rounded-2xl px-8 py-7 animate-fade-in-up delay-1 bg-[rgba(0,200,83,0.05)] border border-[rgba(0,200,83,0.15)]'>
+            <h3 className='font-[var(--yw-font-heading)] font-bold text-lg text-[var(--color-yw-text-primary)] mb-3'>
               🌟 Final Words
             </h3>
-            <p
-              style={{
-                fontSize: 14,
-                color: 'var(--color-yw-text-secondary)',
-                lineHeight: 1.8,
-                marginBottom: 20,
-              }}
-            >
-              Responsible gaming is about staying in control. YaarWin Game
-              should be used for entertainment only, with proper limits and
-              awareness. Play smart, protect your account, manage your budget,
-              and always remember that your safety comes first.
+            <p className='text-sm text-[var(--color-yw-text-muted)] leading-[1.8] mb-5'>
+              Being a responsible player means staying in control of your
+              experience. Use YaarWin Game purely for entertainment, set clear
+              boundaries, and keep your account safe. Play smart, spend wisely,
+              and always put your personal safety first.
             </p>
-            <Link
-              href='/'
-              className='btn btn-primary'
-              style={{
-                padding: '12px 24px',
-                fontSize: 14,
-                borderRadius: 10,
-                textDecoration: 'none',
-                display: 'inline-flex',
-              }}
-            >
+            <Link href='/' className='btn btn-primary'>
               Play Responsibly — Get Started →
             </Link>
           </div>

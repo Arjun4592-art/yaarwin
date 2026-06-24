@@ -2,382 +2,147 @@
 
 import Link from 'next/link'
 
+const quickLinks = [
+  { label: 'APK Download Guide', href: '/blogs/yaarwin-game-app-download' },
+  { label: 'Login Help', href: '/blogs/yaar-win-login' },
+  { label: 'Referral Event', href: '/blogs/yaarwin-grand-referral-event' },
+  { label: 'Responsible Gaming', href: '/responsible-gaming' },
+  { label: 'About Us', href: '/about-us' },
+]
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <span className='text-[11px] font-semibold tracking-[0.1em] uppercase text-[var(--color-yw-green)]'>
+      {children}
+    </span>
+  )
+}
+
 export default function ContactScripts() {
   return (
-    <div
-      style={{
-        fontFamily: 'var(--yw-font-body)',
-        color: 'var(--color-yw-text-primary)',
-        background: 'var(--color-yw-black)',
-      }}
-    >
-      {/* Hero */}
-      <section
-        style={{
-          padding: '140px 24px 80px',
-          background:
-            'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,200,83,0.1) 0%, transparent 70%), var(--color-yw-black)',
-        }}
-      >
-        <div style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
-          <span
-            style={{
-              fontSize: 12,
-              color: 'var(--color-yw-green)',
-              fontWeight: 600,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Get In Touch
-          </span>
-          <h1
-            style={{
-              fontFamily: 'var(--yw-font-heading)',
-              fontWeight: 800,
-              fontSize: 'clamp(2rem, 5vw, 3rem)',
-              lineHeight: 1.2,
-              color: 'var(--color-yw-white)',
-              marginTop: 12,
-              marginBottom: 20,
-              letterSpacing: '-0.02em',
-            }}
-          >
-            Contact <span style={{ color: 'var(--color-yw-green)' }}>Us</span>
+    <div className='font-[var(--yw-font-body)] text-[var(--color-yw-text-primary)] bg-[var(--color-yw-off-white)] overflow-x-hidden'>
+      {/* ══════════════ HERO ══════════════ */}
+      <section className='pt-[140px] pb-20 px-6 relative overflow-hidden bg-[var(--color-yw-off-white)]'>
+        <div
+          aria-hidden
+          className='absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(0,200,83,0.1)_0%,transparent_70%)]'
+        />
+        <div
+          aria-hidden
+          className='absolute inset-0 pointer-events-none [background-image:radial-gradient(circle,rgba(0,200,83,0.07)_1px,transparent_1px)] [background-size:40px_40px]'
+        />
+
+        <div className='max-w-[680px] mx-auto text-center relative animate-fade-in-up'>
+          <SectionLabel>Get In Touch</SectionLabel>
+          <h1 className='font-[var(--yw-font-heading)] font-extrabold text-[clamp(2rem,5vw,3rem)] leading-[1.2] text-[var(--color-yw-text-primary)] mt-3 mb-5 tracking-tight'>
+            Contact <span className='text-gradient'>Us</span>
           </h1>
-          <p
-            style={{
-              fontSize: 16,
-              color: 'var(--color-yw-text-secondary)',
-              lineHeight: 1.8,
-              maxWidth: 520,
-              margin: '0 auto',
-            }}
-          >
-            If you have any questions, suggestions, or need assistance, feel
-            free to get in touch with us. We are here to help and provide the
-            best possible support.
+          <p className='text-[15px] text-[var(--color-yw-text-secondary)] leading-[1.8] max-w-[520px] mx-auto'>
+            Have a question, a suggestion, or need some help? Reach out to us
+            anytime. Our team is ready to assist you and make sure you get the
+            information you need.
           </p>
         </div>
       </section>
 
-      {/* Contact card */}
-      <section
-        style={{
-          padding: '80px 24px',
-          background: 'var(--color-yw-black-soft)',
-        }}
-      >
-        <div style={{ maxWidth: 900, margin: '0 auto' }}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))',
-              gap: 24,
-            }}
-          >
+      {/* ══════════════ CONTACT CARDS ══════════════ */}
+      <section className='py-20 px-6 bg-[var(--color-yw-white)]'>
+        <div className='max-w-[900px] mx-auto'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
             {/* Email */}
-            <div
-              style={{
-                background: 'var(--color-yw-black-card)',
-                border: '1px solid rgba(0,200,83,0.2)',
-                borderRadius: 16,
-                padding: 32,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                gap: 12,
-              }}
-            >
-              <div
-                style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 12,
-                  background: 'rgba(0,200,83,0.1)',
-                  border: '1px solid rgba(0,200,83,0.25)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: 22,
-                }}
-              >
+            <div className='card card-hover flex flex-col items-start gap-3 animate-fade-in-up border-[rgba(0,200,83,0.2)]'>
+              <div className='w-12 h-12 rounded-xl flex items-center justify-center text-[22px] shrink-0 bg-[rgba(0,200,83,0.1)] border border-[rgba(0,200,83,0.25)]'>
                 📧
               </div>
               <div>
-                <div
-                  style={{
-                    fontSize: 12,
-                    color: 'var(--color-yw-green)',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.06em',
-                    marginBottom: 6,
-                  }}
-                >
+                <div className='text-xs font-semibold uppercase tracking-wider text-[var(--color-yw-green)] mb-1.5'>
                   Email Support
                 </div>
                 <a
                   href='mailto:support@yaarwin.game'
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 600,
-                    color: 'var(--color-yw-white)',
-                    textDecoration: 'none',
-                    fontFamily: 'var(--yw-font-heading)',
-                  }}
+                  className='font-[var(--yw-font-heading)] font-semibold text-base text-[var(--color-yw-text-primary)] no-underline hover:text-[var(--color-yw-green)] transition-colors duration-200'
                 >
                   support@yaarwin.game
                 </a>
-                <p
-                  style={{
-                    fontSize: 13,
-                    color: 'var(--color-yw-text-secondary)',
-                    marginTop: 6,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  For general queries, information requests, and support related
-                  to website content.
+                <p className='text-[13px] text-[var(--color-yw-text-muted)] leading-[1.6] mt-1.5'>
+                  Reach us for any content-related questions, feedback, or
+                  information requests about our guides.
                 </p>
               </div>
             </div>
 
             {/* Website */}
-            <div
-              style={{
-                background: 'var(--color-yw-black-card)',
-                border: '1px solid var(--color-yw-black-border)',
-                borderRadius: 16,
-                padding: 32,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                gap: 12,
-              }}
-            >
-              <div
-                style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 12,
-                  background: 'rgba(41,182,246,0.1)',
-                  border: '1px solid rgba(41,182,246,0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: 22,
-                }}
-              >
+            <div className='card card-hover flex flex-col items-start gap-3 animate-fade-in-up delay-1'>
+              <div className='w-12 h-12 rounded-xl flex items-center justify-center text-[22px] shrink-0 bg-[rgba(41,182,246,0.1)] border border-[rgba(41,182,246,0.2)]'>
                 🌐
               </div>
               <div>
-                <div
-                  style={{
-                    fontSize: 12,
-                    color: '#29b6f6',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.06em',
-                    marginBottom: 6,
-                  }}
-                >
+                <div className='text-xs font-semibold uppercase tracking-wider text-[#29b6f6] mb-1.5'>
                   Official Website
                 </div>
                 <a
                   href='https://yaarwin.game'
                   target='_blank'
                   rel='noopener noreferrer'
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 600,
-                    color: 'var(--color-yw-white)',
-                    textDecoration: 'none',
-                    fontFamily: 'var(--yw-font-heading)',
-                  }}
+                  className='font-[var(--yw-font-heading)] font-semibold text-base text-[var(--color-yw-text-primary)] no-underline hover:text-[var(--color-yw-green)] transition-colors duration-200'
                 >
                   yaarwin.game
                 </a>
-                <p
-                  style={{
-                    fontSize: 13,
-                    color: 'var(--color-yw-text-secondary)',
-                    marginTop: 6,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  Visit the official YaarWin platform for registration, login,
-                  and gameplay access.
+                <p className='text-[13px] text-[var(--color-yw-text-muted)] leading-[1.6] mt-1.5'>
+                  Head to the official YaarWin platform for account
+                  registration, login, and full game access.
                 </p>
               </div>
             </div>
 
             {/* Invite Code */}
-            <div
-              style={{
-                background: 'var(--color-yw-black-card)',
-                border: '1px solid var(--color-yw-black-border)',
-                borderRadius: 16,
-                padding: 32,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                gap: 12,
-              }}
-            >
-              <div
-                style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 12,
-                  background: 'rgba(0,200,83,0.08)',
-                  border: '1px solid rgba(0,200,83,0.15)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: 22,
-                }}
-              >
+            <div className='card card-hover flex flex-col items-start gap-3 animate-fade-in-up delay-2'>
+              <div className='w-12 h-12 rounded-xl flex items-center justify-center text-[22px] shrink-0 bg-[rgba(0,200,83,0.08)] border border-[rgba(0,200,83,0.15)]'>
                 🎁
               </div>
               <div>
-                <div
-                  style={{
-                    fontSize: 12,
-                    color: 'var(--color-yw-green)',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.06em',
-                    marginBottom: 6,
-                  }}
-                >
+                <div className='text-xs font-semibold uppercase tracking-wider text-[var(--color-yw-green)] mb-1.5'>
                   Invite Code
                 </div>
-                <span
-                  style={{
-                    fontSize: 20,
-                    fontWeight: 700,
-                    color: 'var(--color-yw-green)',
-                    fontFamily: 'var(--yw-font-heading)',
-                    letterSpacing: '0.05em',
-                  }}
-                >
+                <span className='font-[var(--yw-font-heading)] font-bold text-xl text-[var(--color-yw-green)] tracking-wide'>
                   24348109027
                 </span>
-                <p
-                  style={{
-                    fontSize: 13,
-                    color: 'var(--color-yw-text-secondary)',
-                    marginTop: 6,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  Use this invite code during registration to unlock your
-                  welcome bonus of up to ₹100.
+                <p className='text-[13px] text-[var(--color-yw-text-muted)] leading-[1.6] mt-1.5'>
+                  Enter this code when signing up to claim a welcome bonus of up
+                  to ₹100 on your new account.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Note */}
-          <div
-            style={{
-              marginTop: 32,
-              padding: '24px 28px',
-              background: 'rgba(255,179,0,0.05)',
-              border: '1px solid rgba(255,179,0,0.18)',
-              borderRadius: 14,
-            }}
-          >
-            <p
-              style={{
-                fontSize: 13,
-                color: 'var(--color-yw-text-secondary)',
-                lineHeight: 1.75,
-              }}
-            >
-              <strong style={{ color: 'var(--color-yw-warning)' }}>
+          <div className='mt-8 px-7 py-6 rounded-2xl animate-fade-in-up delay-3 bg-[rgba(255,179,0,0.05)] border border-[rgba(255,179,0,0.18)]'>
+            <p className='text-[13px] text-[var(--color-yw-text-muted)] leading-[1.75]'>
+              <strong className='text-[var(--color-yw-warning)]'>
                 ℹ️ Please Note:
               </strong>{' '}
-              This website is an informational platform only. We do not operate
-              the YaarWin gaming platform directly. For account-related issues
-              such as deposits, withdrawals, and game problems, please contact
-              the official YaarWin support through the app or official website.
+              This is an informational website only — we do not run the YaarWin
+              gaming platform. For account-specific issues such as deposits,
+              withdrawals, or game-related problems, please get in touch with
+              YaarWin directly through their official app or website.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Quick Links */}
-      <section
-        style={{ padding: '64px 24px', background: 'var(--color-yw-black)' }}
-      >
-        <div style={{ maxWidth: 860, margin: '0 auto', textAlign: 'center' }}>
-          <h2
-            style={{
-              fontFamily: 'var(--yw-font-heading)',
-              fontWeight: 700,
-              fontSize: 22,
-              color: 'var(--color-yw-white)',
-              marginBottom: 12,
-            }}
-          >
+      {/* ══════════════ QUICK LINKS ══════════════ */}
+      <section className='py-16 px-6 bg-[var(--color-yw-off-white)]'>
+        <div className='max-w-[860px] mx-auto text-center animate-fade-in-up'>
+          <h2 className='font-[var(--yw-font-heading)] font-bold text-[22px] text-[var(--color-yw-text-primary)] mb-3'>
             Looking for something specific?
           </h2>
-          <p
-            style={{
-              fontSize: 14,
-              color: 'var(--color-yw-text-secondary)',
-              marginBottom: 32,
-            }}
-          >
-            Browse our guides and blog posts for quick answers to common
-            questions.
+          <p className='text-sm text-[var(--color-yw-text-muted)] mb-8'>
+            Browse our guides and blog posts to find quick answers to the most
+            common questions.
           </p>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: 12,
-              justifyContent: 'center',
-            }}
-          >
-            {[
-              {
-                label: 'APK Download Guide',
-                href: '/blogs/yaarwin-game-app-download',
-              },
-              { label: 'Login Help', href: '/blogs/yaar-win-login' },
-              {
-                label: 'Referral Event',
-                href: '/blogs/yaarwin-grand-referral-event',
-              },
-              { label: 'Responsible Gaming', href: '/responsible-gaming' },
-              { label: 'About Us', href: '/about-us' },
-            ].map(({ label, href }) => (
-              <Link
-                key={href}
-                href={href}
-                style={{
-                  padding: '10px 18px',
-                  borderRadius: 999,
-                  fontSize: 13,
-                  border: '1px solid var(--color-yw-black-border)',
-                  color: 'var(--color-yw-text-secondary)',
-                  textDecoration: 'none',
-                  transition: 'border-color 0.2s, color 0.2s',
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'var(--color-yw-green)'
-                  el.style.color = 'var(--color-yw-green)'
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'var(--color-yw-black-border)'
-                  el.style.color = 'var(--color-yw-text-secondary)'
-                }}
-              >
+          <div className='flex flex-wrap gap-3 justify-center'>
+            {quickLinks.map(({ label, href }) => (
+              <Link key={href} href={href} className='btn btn-soft btn-pill'>
                 {label}
               </Link>
             ))}

@@ -3,7 +3,6 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { poppins, inter } from '@/app/fonts'
 import '@/app/globals.css'
-import '@/app/theme-light.css'
 
 import { contactMetadata } from '@/lib/seo/metadata'
 export const metadata = contactMetadata

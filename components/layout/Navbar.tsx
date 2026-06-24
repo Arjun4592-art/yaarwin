@@ -22,9 +22,9 @@ const blogLinks = [
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'About Us', href: '/about' },
+  { label: 'About Us', href: '/about-us' },
   { label: 'Responsible Gaming', href: '/responsible-gaming' },
-  { label: 'Contact Us', href: '/contact' },
+  { label: 'Contact Us', href: '/contact-us' },
 ]
 
 export default function Navbar() {
@@ -60,7 +60,6 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
-  // Lock body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => {
@@ -71,191 +70,108 @@ export default function Navbar() {
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href)
 
+  /* ── shared class builders ── */
+  const desktopLinkClass = (href: string) =>
+    [
+      'px-3.5 py-2 rounded-lg text-sm font-medium font-[var(--yw-font-body)] transition-colors duration-200 no-underline',
+      isActive(href)
+        ? 'text-[var(--color-yw-green)] bg-[rgba(0,200,83,0.08)]'
+        : 'text-[var(--color-yw-text-muted)] hover:text-[var(--color-yw-text-secondary)] hover:bg-[var(--color-yw-white-hover)]',
+    ].join(' ')
+
+  const mobileLinkClass = (href: string) =>
+    [
+      'block px-4 py-3 rounded-[10px] text-[15px] font-medium font-[var(--yw-font-body)] no-underline mb-1 transition-colors duration-200',
+      isActive(href)
+        ? 'text-[var(--color-yw-green)] bg-[rgba(0,200,83,0.08)]'
+        : 'text-[var(--color-yw-text-primary)] hover:bg-[var(--color-yw-white-tint)]',
+    ].join(' ')
+
+  const blogsBtnBase = (active: boolean) =>
+    [
+      'flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium font-[var(--yw-font-body)] border-none transition-colors duration-200 cursor-pointer bg-transparent',
+      active
+        ? 'text-[var(--color-yw-green)] bg-[rgba(0,200,83,0.08)]'
+        : 'text-[var(--color-yw-text-muted)] hover:text-[var(--color-yw-text-secondary)] hover:bg-[var(--color-yw-white-hover)]',
+    ].join(' ')
+
+  const mobileBlogsBtnClass = (active: boolean) =>
+    [
+      'w-full flex items-center justify-between px-4 py-3 rounded-[10px] text-[15px] font-medium font-[var(--yw-font-body)] border-none cursor-pointer mb-1 transition-colors duration-200 bg-transparent',
+      active
+        ? 'text-[var(--color-yw-green)] bg-[rgba(0,200,83,0.08)]'
+        : 'text-[var(--color-yw-text-primary)] hover:bg-[var(--color-yw-white-tint)]',
+    ].join(' ')
+
+  const ChevronIcon = ({ open }: { open: boolean }) => (
+    <svg
+      width='12'
+      height='12'
+      viewBox='0 0 12 12'
+      fill='none'
+      className={`transition-transform duration-200 ${open ? 'rotate-180' : 'rotate-0'}`}
+    >
+      <path
+        d='M2 4L6 8L10 4'
+        stroke='currentColor'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+    </svg>
+  )
+
   return (
     <>
+      {/* ── Header ── */}
       <header
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 'var(--yw-z-modal)' as any,
-          transition: `background-color var(--yw-duration-3) var(--yw-ease), box-shadow var(--yw-duration-3) var(--yw-ease), backdrop-filter var(--yw-duration-3) var(--yw-ease)`,
-          backgroundColor: scrolled ? 'rgba(10,13,11,0.92)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(18px)' : 'blur(0px)',
-          boxShadow: scrolled ? '0 1px 0 rgba(0,200,83,0.12)' : 'none',
-        }}
+        className={[
+          'fixed top-0 left-0 right-0 z-[100] transition-all duration-300',
+          scrolled
+            ? 'bg-white/90 backdrop-blur-lg shadow-sm border-b border-[rgba(0,200,83,0.12)]'
+            : 'bg-transparent',
+        ].join(' ')}
       >
-        <nav
-          style={{
-            maxWidth: 1200,
-            margin: '0 auto',
-            padding: '0 24px',
-            height: 68,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
+        <nav className='max-w-[1200px] mx-auto px-6 h-[68px] flex items-center justify-between'>
           {/* Logo */}
-          <Link
-            href='/'
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 10,
-              textDecoration: 'none',
-            }}
-          >
-            <span
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background:
-                  'linear-gradient(135deg, var(--color-yw-green) 0%, var(--color-yw-green-dark) 100%)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontFamily: 'var(--yw-font-heading)',
-                fontWeight: 800,
-                fontSize: 16,
-                color: '#000',
-                letterSpacing: '-0.5px',
-                flexShrink: 0,
-                boxShadow: 'var(--yw-shadow-green)',
-              }}
-            >
+          <Link href='/' className='flex items-center gap-2.5 no-underline'>
+            <span className='w-9 h-9 rounded-[10px] flex items-center justify-center shrink-0 font-[var(--yw-font-heading)] font-extrabold text-base text-[#003d18] bg-gradient-to-br from-[#00c853] to-[#69f0ae] shadow-[var(--yw-shadow-green-sm)] animate-pulse-glow'>
               YW
             </span>
-            <span
-              style={{
-                fontFamily: 'var(--yw-font-heading)',
-                fontWeight: 700,
-                fontSize: 20,
-                color: 'var(--color-yw-white)',
-                letterSpacing: '-0.3px',
-              }}
-            >
-              Yaar<span style={{ color: 'var(--color-yw-green)' }}>Win</span>
+            <span className='font-[var(--yw-font-heading)] font-bold text-xl text-[var(--color-yw-text-primary)] tracking-tight'>
+              Yaar<span className='text-[var(--color-yw-green)]'>Win</span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <div
-            style={{ display: 'flex', alignItems: 'center', gap: 4 }}
-            className='desktop-nav'
-          >
+          <div className='hidden md:flex items-center gap-1'>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                style={{
-                  padding: '8px 14px',
-                  borderRadius: 8,
-                  fontSize: 14,
-                  fontWeight: 500,
-                  fontFamily: 'var(--yw-font-body)',
-                  color: isActive(link.href)
-                    ? 'var(--color-yw-green)'
-                    : 'var(--color-yw-text-secondary)',
-                  textDecoration: 'none',
-                  transition: 'color 0.2s ease, background 0.2s ease',
-                  background: isActive(link.href)
-                    ? 'rgba(0,200,83,0.08)'
-                    : 'transparent',
-                }}
+                className={desktopLinkClass(link.href)}
               >
                 {link.label}
               </Link>
             ))}
 
             {/* Blog Dropdown */}
-            <div style={{ position: 'relative' }} ref={dropdownRef}>
+            <div className='relative' ref={dropdownRef}>
               <button
                 onClick={() => setBlogOpen((v) => !v)}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  padding: '8px 14px',
-                  borderRadius: 8,
-                  fontSize: 14,
-                  fontWeight: 500,
-                  fontFamily: 'var(--yw-font-body)',
-                  border: 'none',
-                  cursor: 'pointer',
-                  color: pathname.startsWith('/blogs')
-                    ? 'var(--color-yw-green)'
-                    : 'var(--color-yw-text-secondary)',
-                  background: pathname.startsWith('/blogs')
-                    ? 'rgba(0,200,83,0.08)'
-                    : 'transparent',
-                  transition: 'color 0.2s ease, background 0.2s ease',
-                }}
+                className={blogsBtnBase(pathname.startsWith('/blogs'))}
               >
                 Blogs
-                <svg
-                  width='12'
-                  height='12'
-                  viewBox='0 0 12 12'
-                  fill='none'
-                  style={{
-                    transition: 'transform 0.2s ease',
-                    transform: blogOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                  }}
-                >
-                  <path
-                    d='M2 4L6 8L10 4'
-                    stroke='currentColor'
-                    strokeWidth='1.5'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                </svg>
+                <ChevronIcon open={blogOpen} />
               </button>
 
               {blogOpen && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 'calc(100% + 8px)',
-                    right: 0,
-                    minWidth: 300,
-                    background: 'var(--color-yw-black-card)',
-                    border: '1px solid var(--color-yw-black-border)',
-                    borderRadius: 12,
-                    padding: 8,
-                    boxShadow: 'var(--yw-shadow-card)',
-                    animation: 'yw-fade-in-up 0.2s ease forwards',
-                  }}
-                >
+                <div className='absolute top-[calc(100%+8px)] right-0 min-w-[300px] bg-[var(--color-yw-white)] border border-[var(--color-yw-white-border)] rounded-xl p-2 shadow-[var(--yw-shadow-card)] animate-fade-in-up z-50'>
                   {blogLinks.map((b) => (
                     <Link
                       key={b.href}
                       href={b.href}
-                      style={{
-                        display: 'block',
-                        padding: '10px 14px',
-                        borderRadius: 8,
-                        fontSize: 13,
-                        color: 'var(--color-yw-text-secondary)',
-                        textDecoration: 'none',
-                        transition: 'color 0.2s, background 0.2s',
-                        fontFamily: 'var(--yw-font-body)',
-                      }}
-                      onMouseEnter={(e) => {
-                        ;(e.target as HTMLElement).style.color =
-                          'var(--color-yw-white)'
-                        ;(e.target as HTMLElement).style.background =
-                          'rgba(0,200,83,0.08)'
-                      }}
-                      onMouseLeave={(e) => {
-                        ;(e.target as HTMLElement).style.color =
-                          'var(--color-yw-text-secondary)'
-                        ;(e.target as HTMLElement).style.background =
-                          'transparent'
-                      }}
+                      className='block px-3.5 py-2.5 rounded-lg text-[13px] text-[var(--color-yw-text-muted)] font-[var(--yw-font-body)] no-underline transition-colors duration-200 hover:text-[var(--color-yw-text-primary)] hover:bg-[var(--color-yw-white-tint)]'
                     >
                       {b.label}
                     </Link>
@@ -269,13 +185,7 @@ export default function Navbar() {
               href='https://4yaarwin.com/#/register?invitationCode=24348109027'
               target='_blank'
               rel='noopener noreferrer'
-              className='btn btn-primary'
-              style={{
-                padding: '9px 20px',
-                fontSize: 14,
-                marginLeft: 8,
-                borderRadius: 8,
-              }}
+              className='btn btn-primary btn-sm ml-2'
             >
               Play Now
             </a>
@@ -283,106 +193,61 @@ export default function Navbar() {
 
           {/* Hamburger */}
           <button
-            className='hamburger-btn'
+            className='md:hidden flex flex-col gap-[5px] p-2 bg-transparent border-none cursor-pointer'
             onClick={() => setMenuOpen((v) => !v)}
             aria-label='Toggle menu'
-            style={{
-              display: 'none',
-              flexDirection: 'column',
-              gap: 5,
-              padding: 8,
-              background: 'transparent',
-              border: 'none',
-              cursor: 'pointer',
-            }}
           >
-            {[0, 1, 2].map((i) => (
-              <span
-                key={i}
-                style={{
-                  display: 'block',
-                  width: 24,
-                  height: 2,
-                  background: 'var(--color-yw-white)',
-                  borderRadius: 2,
-                  transition: 'transform 0.3s ease, opacity 0.3s ease',
-                  transform: menuOpen
-                    ? i === 0
-                      ? 'translateY(7px) rotate(45deg)'
-                      : i === 2
-                        ? 'translateY(-7px) rotate(-45deg)'
-                        : 'scaleX(0)'
-                    : 'none',
-                  opacity: menuOpen && i === 1 ? 0 : 1,
-                }}
-              />
-            ))}
+            <span
+              className='block w-6 h-0.5 rounded-sm bg-[var(--color-yw-text-primary)] transition-all duration-300'
+              style={{
+                transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none',
+              }}
+            />
+            <span
+              className='block w-6 h-0.5 rounded-sm bg-[var(--color-yw-text-primary)] transition-all duration-300'
+              style={{
+                transform: menuOpen ? 'scaleX(0)' : 'none',
+                opacity: menuOpen ? 0 : 1,
+              }}
+            />
+            <span
+              className='block w-6 h-0.5 rounded-sm bg-[var(--color-yw-text-primary)] transition-all duration-300'
+              style={{
+                transform: menuOpen
+                  ? 'translateY(-7px) rotate(-45deg)'
+                  : 'none',
+              }}
+            />
           </button>
         </nav>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Overlay */}
       <div
+        className='fixed inset-0 z-[99] bg-black/50 backdrop-blur-sm transition-opacity duration-300 md:hidden'
         style={{
-          position: 'fixed',
-          inset: 0,
-          zIndex: 99,
-          background: 'rgba(0,0,0,0.7)',
-          backdropFilter: 'blur(4px)',
           opacity: menuOpen ? 1 : 0,
           pointerEvents: menuOpen ? 'all' : 'none',
-          transition: 'opacity 0.3s ease',
         }}
         onClick={() => setMenuOpen(false)}
       />
 
       {/* Mobile Drawer */}
       <div
+        className='fixed top-0 right-0 bottom-0 z-[100] bg-[var(--color-yw-white)] border-l border-[var(--color-yw-white-border)] flex flex-col py-6 overflow-y-auto transition-transform duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] md:hidden shadow-[var(--yw-shadow-card)]'
         style={{
-          position: 'fixed',
-          top: 0,
-          right: 0,
-          bottom: 0,
           width: 'min(320px, 90vw)',
-          zIndex: 100,
-          background: 'var(--color-yw-black-card)',
-          borderLeft: '1px solid var(--color-yw-black-border)',
           transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
-          transition: 'transform 0.35s cubic-bezier(0.4,0,0.2,1)',
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '24px 0',
-          overflowY: 'auto',
         }}
       >
-        <div
-          style={{
-            padding: '0 24px 24px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            borderBottom: '1px solid var(--color-yw-black-border)',
-          }}
-        >
-          <span
-            style={{
-              fontFamily: 'var(--yw-font-heading)',
-              fontWeight: 700,
-              fontSize: 18,
-              color: 'var(--color-yw-white)',
-            }}
-          >
-            Yaar<span style={{ color: 'var(--color-yw-green)' }}>Win</span>
+        {/* Drawer Header */}
+        <div className='px-6 pb-6 flex items-center justify-between border-b border-[var(--color-yw-white-border)]'>
+          <span className='font-[var(--yw-font-heading)] font-bold text-lg text-[var(--color-yw-text-primary)]'>
+            Yaar<span className='text-[var(--color-yw-green)]'>Win</span>
           </span>
           <button
             onClick={() => setMenuOpen(false)}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: 'var(--color-yw-text-secondary)',
-              cursor: 'pointer',
-              padding: 4,
-            }}
+            className='bg-transparent border-none text-[var(--color-yw-text-muted)] cursor-pointer p-1 hover:text-[var(--color-yw-text-primary)] transition-colors duration-200'
           >
             <svg width='20' height='20' viewBox='0 0 20 20' fill='none'>
               <path
@@ -395,27 +260,13 @@ export default function Navbar() {
           </button>
         </div>
 
-        <div style={{ padding: '16px 16px 0', flex: 1 }}>
+        {/* Drawer Links */}
+        <div className='px-4 pt-4 flex-1'>
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              style={{
-                display: 'block',
-                padding: '13px 16px',
-                borderRadius: 10,
-                fontSize: 15,
-                fontWeight: 500,
-                color: isActive(link.href)
-                  ? 'var(--color-yw-green)'
-                  : 'var(--color-yw-text-primary)',
-                textDecoration: 'none',
-                marginBottom: 4,
-                background: isActive(link.href)
-                  ? 'rgba(0,200,83,0.08)'
-                  : 'transparent',
-                fontFamily: 'var(--yw-font-body)',
-              }}
+              className={mobileLinkClass(link.href)}
             >
               {link.label}
             </Link>
@@ -425,77 +276,22 @@ export default function Navbar() {
           <div>
             <button
               onClick={() => setMobileBlogOpen((v) => !v)}
-              style={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '13px 16px',
-                borderRadius: 10,
-                fontSize: 15,
-                fontWeight: 500,
-                color: pathname.startsWith('/blogs')
-                  ? 'var(--color-yw-green)'
-                  : 'var(--color-yw-text-primary)',
-                background: pathname.startsWith('/blogs')
-                  ? 'rgba(0,200,83,0.08)'
-                  : 'transparent',
-                border: 'none',
-                cursor: 'pointer',
-                fontFamily: 'var(--yw-font-body)',
-                marginBottom: 4,
-              }}
+              className={mobileBlogsBtnClass(pathname.startsWith('/blogs'))}
             >
               Blogs
-              <svg
-                width='14'
-                height='14'
-                viewBox='0 0 12 12'
-                fill='none'
-                style={{
-                  transition: 'transform 0.2s',
-                  transform: mobileBlogOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                }}
-              >
-                <path
-                  d='M2 4L6 8L10 4'
-                  stroke='currentColor'
-                  strokeWidth='1.5'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                />
-              </svg>
+              <ChevronIcon open={mobileBlogOpen} />
             </button>
 
             <div
-              style={{
-                overflow: 'hidden',
-                maxHeight: mobileBlogOpen ? 400 : 0,
-                transition: 'max-height 0.35s cubic-bezier(0.4,0,0.2,1)',
-              }}
+              className='overflow-hidden transition-all duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]'
+              style={{ maxHeight: mobileBlogOpen ? 400 : 0 }}
             >
-              <div
-                style={{
-                  padding: '0 0 8px 12px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 2,
-                }}
-              >
+              <div className='pl-3 pb-2 flex flex-col gap-0.5'>
                 {blogLinks.map((b) => (
                   <Link
                     key={b.href}
                     href={b.href}
-                    style={{
-                      display: 'block',
-                      padding: '10px 14px',
-                      borderRadius: 8,
-                      fontSize: 13,
-                      color: 'var(--color-yw-text-secondary)',
-                      textDecoration: 'none',
-                      borderLeft: '2px solid var(--color-yw-green-dark)',
-                      fontFamily: 'var(--yw-font-body)',
-                    }}
+                    className='block px-3.5 py-2.5 rounded-lg text-[13px] text-[var(--color-yw-text-muted)] font-[var(--yw-font-body)] no-underline border-l-2 border-[var(--color-yw-green)] hover:text-[var(--color-yw-text-primary)] hover:bg-[var(--color-yw-white-tint)] transition-colors duration-200'
                   >
                     {b.label}
                   </Link>
@@ -504,32 +300,19 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div style={{ padding: '16px 16px 0' }}>
+          {/* CTA */}
+          <div className='px-0 pt-4'>
             <a
               href='https://4yaarwin.com/#/register?invitationCode=24348109027'
               target='_blank'
               rel='noopener noreferrer'
-              className='btn btn-primary'
-              style={{
-                width: '100%',
-                padding: '14px',
-                fontSize: 15,
-                borderRadius: 10,
-                justifyContent: 'center',
-              }}
+              className='btn btn-primary w-full justify-center py-3.5 text-[15px] rounded-[10px]'
             >
               🎮 Play Now — Register Free
             </a>
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 900px) {
-          .desktop-nav { display: none !important; }
-          .hamburger-btn { display: flex !important; }
-        }
-      `}</style>
     </>
   )
 }

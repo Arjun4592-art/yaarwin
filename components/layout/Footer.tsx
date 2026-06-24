@@ -5,9 +5,9 @@ import Link from 'next/link'
 const footerLinks = {
   Pages: [
     { label: 'Home', href: '/' },
-    { label: 'About Us', href: '/about' },
+    { label: 'About Us', href: '/about-us' },
     { label: 'Responsible Gaming', href: '/responsible-gaming' },
-    { label: 'Contact Us', href: '/contact' },
+    { label: 'Contact Us', href: '/contact-us' },
   ],
   Blogs: [
     {
@@ -26,87 +26,44 @@ const footerLinks = {
   ],
 }
 
+const bottomLinks = [
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms & Conditions', href: '/terms-and-conditions' },
+  { label: 'Responsible Gaming', href: '/responsible-gaming' },
+  { label: 'About Us', href: '/about-us' },
+  { label: 'Contact', href: '/contact-us' },
+]
+
 export default function Footer() {
   return (
-    <footer
-      style={{
-        background: 'var(--color-yw-black-soft)',
-        borderTop: '1px solid var(--color-yw-black-border)',
-        paddingTop: 64,
-        paddingBottom: 32,
-        fontFamily: 'var(--yw-font-body)',
-      }}
-    >
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
-        {/* Top grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-            gap: 48,
-            marginBottom: 56,
-          }}
-        >
+    <footer className='bg-[var(--color-yw-white-tint)] border-t border-[var(--color-yw-white-border)] pt-16 pb-8 font-[var(--yw-font-body)]'>
+      <div className='max-w-[1200px] mx-auto px-6'>
+        {/* ── Top grid ── */}
+        <div className='grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-12 mb-14'>
           {/* Brand */}
-          <div style={{ gridColumn: 'span 1' }}>
+          <div>
             <Link
               href='/'
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 10,
-                textDecoration: 'none',
-                marginBottom: 16,
-              }}
+              className='inline-flex items-center gap-2.5 no-underline mb-4'
             >
-              <span
-                style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: 10,
-                  background:
-                    'linear-gradient(135deg, var(--color-yw-green) 0%, var(--color-yw-green-dark) 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontFamily: 'var(--yw-font-heading)',
-                  fontWeight: 800,
-                  fontSize: 15,
-                  color: '#000',
-                  boxShadow: 'var(--yw-shadow-green)',
-                }}
-              >
+              <span className='w-9 h-9 rounded-[10px] flex items-center justify-center font-[var(--yw-font-heading)] font-extrabold text-[15px] text-[#003d18] bg-gradient-to-br from-[#00c853] to-[#69f0ae] shadow-[var(--yw-shadow-green-sm)]'>
                 YW
               </span>
-              <span
-                style={{
-                  fontFamily: 'var(--yw-font-heading)',
-                  fontWeight: 700,
-                  fontSize: 20,
-                  color: 'var(--color-yw-white)',
-                }}
-              >
-                Yaar<span style={{ color: 'var(--color-yw-green)' }}>Win</span>
+              <span className='font-[var(--yw-font-heading)] font-bold text-xl text-[var(--color-yw-text-primary)]'>
+                Yaar<span className='text-[var(--color-yw-green)]'>Win</span>
               </span>
             </Link>
-            <p
-              style={{
-                fontSize: 13,
-                color: 'var(--color-yw-text-secondary)',
-                lineHeight: 1.7,
-                marginBottom: 20,
-                maxWidth: 240,
-              }}
-            >
+
+            <p className='text-[13px] text-[var(--color-yw-text-muted)] leading-[1.7] mb-5 max-w-[240px]'>
               India's trusted online gaming platform. Play Wingo, K3, 5D,
-              Aviator & more.
+              Aviator &amp; more.
             </p>
+
             <a
               href='https://4yaarwin.com/#/register?invitationCode=24348109027'
               target='_blank'
               rel='noopener noreferrer'
-              className='btn btn-primary'
-              style={{ padding: '10px 20px', fontSize: 13, borderRadius: 8 }}
+              className='btn btn-primary btn-sm'
             >
               Register Free →
             </a>
@@ -115,38 +72,15 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4
-                style={{
-                  fontFamily: 'var(--yw-font-heading)',
-                  fontWeight: 600,
-                  fontSize: 13,
-                  color: 'var(--color-yw-green)',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  marginBottom: 16,
-                }}
-              >
+              <h4 className='font-[var(--yw-font-heading)] font-semibold text-[13px] text-[var(--color-yw-green)] tracking-[0.08em] uppercase mb-4'>
                 {title}
               </h4>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <ul className='flex flex-col gap-2.5'>
                 {links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      style={{
-                        fontSize: 13,
-                        color: 'var(--color-yw-text-secondary)',
-                        textDecoration: 'none',
-                        transition: 'color 0.2s ease',
-                      }}
-                      onMouseEnter={(e) =>
-                        ((e.target as HTMLElement).style.color =
-                          'var(--color-yw-white)')
-                      }
-                      onMouseLeave={(e) =>
-                        ((e.target as HTMLElement).style.color =
-                          'var(--color-yw-text-secondary)')
-                      }
+                      className='text-[13px] text-[var(--color-yw-text-muted)] no-underline transition-colors duration-200 hover:text-[var(--color-yw-text-primary)]'
                     >
                       {link.label}
                     </Link>
@@ -158,77 +92,34 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4
-              style={{
-                fontFamily: 'var(--yw-font-heading)',
-                fontWeight: 600,
-                fontSize: 13,
-                color: 'var(--color-yw-green)',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                marginBottom: 16,
-              }}
-            >
+            <h4 className='font-[var(--yw-font-heading)] font-semibold text-[13px] text-[var(--color-yw-green)] tracking-[0.08em] uppercase mb-4'>
               Contact
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <div className='flex flex-col gap-3 mb-6'>
               <a
                 href='mailto:support@yaarwin.game'
-                style={{
-                  fontSize: 13,
-                  color: 'var(--color-yw-text-secondary)',
-                  textDecoration: 'none',
-                }}
+                className='text-[13px] text-[var(--color-yw-text-muted)] no-underline hover:text-[var(--color-yw-text-primary)] transition-colors duration-200'
               >
                 📧 support@yaarwin.game
               </a>
               <a
                 href='https://yaarwin.game'
-                style={{
-                  fontSize: 13,
-                  color: 'var(--color-yw-text-secondary)',
-                  textDecoration: 'none',
-                }}
+                className='text-[13px] text-[var(--color-yw-text-muted)] no-underline hover:text-[var(--color-yw-text-primary)] transition-colors duration-200'
               >
                 🌐 yaarwin.game
               </a>
             </div>
 
-            {/* App info */}
-            <div
-              style={{
-                marginTop: 24,
-                padding: '14px 16px',
-                background: 'var(--color-yw-black-card)',
-                border: '1px solid var(--color-yw-black-border)',
-                borderRadius: 10,
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 11,
-                  color: 'var(--color-yw-text-muted)',
-                  marginBottom: 6,
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.06em',
-                }}
-              >
+            {/* App info card */}
+            <div className='p-3.5 bg-[var(--color-yw-white)] border border-[var(--color-yw-white-border)] rounded-[10px]'>
+              <div className='text-[11px] text-[var(--color-yw-text-hint)] font-semibold uppercase tracking-[0.06em] mb-1.5'>
                 App Details
               </div>
-              <div
-                style={{
-                  fontSize: 12,
-                  color: 'var(--color-yw-text-secondary)',
-                  lineHeight: 1.8,
-                }}
-              >
+              <div className='text-[12px] text-[var(--color-yw-text-muted)] leading-[1.8]'>
                 Version: 1.5 &nbsp;·&nbsp; 12 MB
                 <br />
                 Invite Code:{' '}
-                <span
-                  style={{ color: 'var(--color-yw-green)', fontWeight: 600 }}
-                >
+                <span className='text-[var(--color-yw-green)] font-semibold'>
                   24348109027
                 </span>
               </div>
@@ -236,26 +127,12 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
-        <div
-          style={{
-            height: 1,
-            background: 'var(--color-yw-black-border)',
-            marginBottom: 24,
-          }}
-        />
+        {/* ── Divider ── */}
+        <hr className='divider' />
 
-        {/* Disclaimer */}
-        <p
-          style={{
-            fontSize: 11,
-            color: 'var(--color-yw-text-muted)',
-            lineHeight: 1.7,
-            marginBottom: 20,
-            maxWidth: 900,
-          }}
-        >
-          <strong style={{ color: 'var(--color-yw-text-secondary)' }}>
+        {/* ── Disclaimer ── */}
+        <p className='text-[11px] text-[var(--color-yw-text-hint)] leading-[1.7] mb-5 max-w-[900px]'>
+          <strong className='text-[var(--color-yw-text-muted)]'>
             Disclaimer:
           </strong>{' '}
           This website is for informational and educational purposes only. We do
@@ -264,41 +141,17 @@ export default function Footer() {
           responsibly.
         </p>
 
-        {/* Bottom bar */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: 12,
-          }}
-        >
-          <p style={{ fontSize: 12, color: 'var(--color-yw-text-muted)' }}>
+        {/* ── Bottom bar ── */}
+        <div className='flex flex-wrap items-center justify-between gap-y-3 gap-x-4'>
+          <p className='text-[12px] text-[var(--color-yw-text-hint)]'>
             © 2026 YaarWin Game. All rights reserved.
           </p>
-          <div style={{ display: 'flex', gap: 20 }}>
-            {[
-              { label: 'Responsible Gaming', href: '/responsible-gaming' },
-              { label: 'About Us', href: '/about-us' },
-              { label: 'Contact', href: '/contact-us' },
-            ].map((l) => (
+          <div className='flex flex-wrap gap-x-5 gap-y-2'>
+            {bottomLinks.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                style={{
-                  fontSize: 12,
-                  color: 'var(--color-yw-text-muted)',
-                  textDecoration: 'none',
-                }}
-                onMouseEnter={(e) =>
-                  ((e.target as HTMLElement).style.color =
-                    'var(--color-yw-green)')
-                }
-                onMouseLeave={(e) =>
-                  ((e.target as HTMLElement).style.color =
-                    'var(--color-yw-text-muted)')
-                }
+                className='text-[12px] text-[var(--color-yw-text-hint)] no-underline hover:text-[var(--color-yw-green)] transition-colors duration-200'
               >
                 {l.label}
               </Link>
