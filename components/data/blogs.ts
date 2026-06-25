@@ -148,7 +148,7 @@ export const blogs: Blog[] = [
       {
         type: 'cta',
         label: '📥 Download YaarWin APK — Register Free',
-        href: 'https://4yaarwin.com/#/register?invitationCode=24348109027',
+        href: 'https://www.yaarwin14.com/#/register?invitationCode=67868138834',
       },
     ],
   },
@@ -233,7 +233,7 @@ export const blogs: Blog[] = [
       {
         type: 'cta',
         label: '🔑 Login to Yaar Win — Play Now',
-        href: 'https://4yaarwin.com/#/register?invitationCode=24348109027',
+        href: 'https://www.yaarwin14.com/#/register?invitationCode=67868138834',
       },
       { type: 'heading2', text: 'Frequently Asked Questions' },
       {
@@ -393,7 +393,7 @@ export const blogs: Blog[] = [
       {
         type: 'cta',
         label: '🚀 Join YaarWin — Start Referring Now',
-        href: 'https://4yaarwin.com/#/register?invitationCode=24348109027',
+        href: 'https://www.yaarwin14.com/#/register?invitationCode=67868138834',
       },
     ],
   },
@@ -505,7 +505,7 @@ export const blogs: Blog[] = [
       {
         type: 'cta',
         label: '🎮 Register on YaarWin — Play Now',
-        href: 'https://4yaarwin.com/#/register?invitationCode=24348109027',
+        href: 'https://www.yaarwin14.com/#/register?invitationCode=67868138834',
       },
     ],
   },

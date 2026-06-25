@@ -59,10 +59,10 @@ export default function ContactScripts() {
                   Email Support
                 </div>
                 <a
-                  href='mailto:support@yaarwin.game'
+                  href='mailto:support@yaarwiner.com'
                   className='font-[var(--yw-font-heading)] font-semibold text-base text-[var(--color-yw-text-primary)] no-underline hover:text-[var(--color-yw-green)] transition-colors duration-200'
                 >
-                  support@yaarwin.game
+                  support@yaarwiner.com
                 </a>
                 <p className='text-[13px] text-[var(--color-yw-text-muted)] leading-[1.6] mt-1.5'>
                   Reach us for any content-related questions, feedback, or
@@ -81,12 +81,12 @@ export default function ContactScripts() {
                   Official Website
                 </div>
                 <a
-                  href='https://yaarwin.game'
+                  href='https://yaarwiner.com'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='font-[var(--yw-font-heading)] font-semibold text-base text-[var(--color-yw-text-primary)] no-underline hover:text-[var(--color-yw-green)] transition-colors duration-200'
                 >
-                  yaarwin.game
+                  yaarwiner.com
                 </a>
                 <p className='text-[13px] text-[var(--color-yw-text-muted)] leading-[1.6] mt-1.5'>
                   Head to the official YaarWin platform for account

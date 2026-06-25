@@ -6,12 +6,12 @@ const whatWeProvide = [
   {
     icon: '📋',
     title: 'Login & Registration Guides',
-    desc: 'Easy-to-follow, step-by-step guides that help both new and returning users register or sign in to YaarWin quickly and without any hassle.',
+    desc: 'Easy-to-follow, step-by-step guides that help both new and returning users register or sign in to YaarWiner quickly and without any hassle.',
   },
   {
     icon: '📥',
     title: 'APK Download & Installation',
-    desc: 'A complete walkthrough for downloading and installing the latest YaarWin APK directly from the official website — written for beginners.',
+    desc: 'A complete walkthrough for downloading and installing the latest YaarWiner APK directly from the official website — written for beginners.',
   },
   {
     icon: '🎮',
@@ -21,17 +21,17 @@ const whatWeProvide = [
   {
     icon: '💳',
     title: 'Deposit & Withdrawal Guides',
-    desc: 'Straightforward guides on how to add money to your YaarWin wallet and withdraw your earnings with ease.',
+    desc: 'Straightforward guides on how to add money to your YaarWiner wallet and withdraw your earnings with ease.',
   },
   {
     icon: '🎁',
     title: 'Referral & Gift Code Info',
-    desc: 'Up-to-date information on the referral program, available gift codes, and other bonus features offered by YaarWin.',
+    desc: 'Up-to-date information on the referral program, available gift codes, and other bonus features offered by YaarWiner.',
   },
   {
     icon: '📰',
     title: 'Platform News & Updates',
-    desc: 'The latest news, events, and announcements from the YaarWin gaming platform, all in one place.',
+    desc: 'The latest news, events, and announcements from the YaarWiner gaming platform, all in one place.',
   },
 ]
 
@@ -73,10 +73,10 @@ export default function AboutScripts() {
             <div className='text-center sm:text-left animate-fade-in-up'>
               <SectionLabel>Who We Are</SectionLabel>
               <h1 className='font-[var(--yw-font-heading)] font-extrabold text-[clamp(2rem,5vw,3rem)] leading-[1.2] text-[var(--color-yw-text-primary)] mt-3 mb-5 tracking-tight'>
-                About <span className='text-gradient'>YaarWin</span> Game
+                About <span className='text-gradient'>YaarWiner</span> Game
               </h1>
               <p className='text-[15px] text-[var(--color-yw-text-secondary)] leading-[1.8] max-w-[560px] mx-auto sm:mx-0'>
-                Welcome to YaarWin Game — your trusted source for clear,
+                Welcome to YaarWiner Game — your trusted source for clear,
                 accurate, and up-to-date information about online gaming apps,
                 login processes, and game guides. Our goal is straightforward:
                 help users understand how the platform works, without any
@@ -93,7 +93,7 @@ export default function AboutScripts() {
                 />
                 <Image
                   src='/yaar-win-300x300.jpeg'
-                  alt='YaarWin Logo'
+                  alt='YaarWiner Logo'
                   width={320}
                   height={320}
                   className='object-contain'
@@ -166,7 +166,7 @@ export default function AboutScripts() {
               What We Provide
             </h2>
             <p className='text-[14px] text-[var(--color-yw-text-muted)] mt-3 max-w-[480px] mx-auto leading-[1.7]'>
-              Everything a YaarWin user might need — from first login to
+              Everything a YaarWiner user might need — from first login to
               understanding advanced features.
             </p>
           </div>
@@ -203,7 +203,7 @@ export default function AboutScripts() {
             <p className='text-[13px] text-[var(--color-yw-text-muted)] leading-[1.7]'>
               We encourage all users to play responsibly. Online gaming is
               entertainment — always set personal limits and use platforms with
-              full awareness. YaarWin Game is strictly for users aged 18 and
+              full awareness. YaarWiner Game is strictly for users aged 18 and
               above.
             </p>
           </div>

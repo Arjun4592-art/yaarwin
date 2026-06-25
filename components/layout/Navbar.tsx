@@ -184,7 +184,7 @@ export default function Navbar() {
 
             {/* CTA */}
             <a
-              href='https://4yaarwin.com/#/register?invitationCode=24348109027'
+              href='https://www.yaarwin14.com/#/register?invitationCode=67868138834'
               target='_blank'
               rel='noopener noreferrer'
               className='btn btn-primary btn-sm ml-2'

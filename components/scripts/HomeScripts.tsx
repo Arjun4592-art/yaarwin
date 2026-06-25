@@ -7,12 +7,16 @@ import Image from 'next/image'
 /* ─────────────────────────── DATA ─────────────────────────── */
 
 const appDetails = [
-  { label: 'App Name', value: 'Yaar Win' },
+  { label: 'App Name', value: 'Yaar Winer' },
   { label: 'Latest Version', value: '1.5 (2026)' },
   { label: 'Platform', value: 'Android APK' },
   { label: 'App Size', value: '12 MB' },
-  { label: 'Website', value: 'yaarwin.game' },
-  { label: 'Invite Code', value: '24348109027', highlight: true },
+  { label: 'Website', value: 'yaarwiner.com' },
+  {
+    label: 'Invite Code',
+    value: '67868138834',
+    highlight: true,
+  },
   { label: 'Welcome Bonus', value: 'Up to ₹100', highlight: true },
 ]
 
@@ -163,16 +167,16 @@ const referralPrizes = [
 
 const faqs = [
   {
-    q: 'What is YaarWin?',
-    a: 'YaarWin is an online gaming platform where users can explore games like Wingo, K3, 5D, Slots, and Aviator and earn real rewards.',
+    q: 'What is YaarWiner?',
+    a: 'YaarWiner is an online gaming platform where users can explore games like Wingo, K3, 5D, Slots, and Aviator and earn real rewards.',
   },
   {
-    q: 'Is YaarWin available on Google Play Store?',
+    q: 'Is YaarWiner available on Google Play Store?',
     a: 'No. Download the APK directly from the official website yaarwin.game. This is standard for Indian gaming apps.',
   },
   {
-    q: 'Is YaarWin Game safe to use?',
-    a: 'Yes, YaarWin uses secure login, OTP verification, and encrypted transactions. Always use the official site yaarwin.game to stay safe.',
+    q: 'Is YaarWiner Game safe to use?',
+    a: 'Yes, YaarWiner uses secure login, OTP verification, and encrypted transactions. Always use the official site yaarwin.game to stay safe.',
   },
   {
     q: 'What is the minimum withdrawal amount?',
@@ -187,8 +191,8 @@ const faqs = [
     a: 'UPI, PhonePe, bank transfer (NEFT/IMPS), and digital wallets are all supported in Indian Rupees.',
   },
   {
-    q: 'What is the YaarWin Invitation Code?',
-    a: 'The YaarWin invitation code is 24348109027. Use it during registration to unlock up to ₹100 welcome bonus.',
+    q: 'What is the YaarWiner Invitation Code?',
+    a: 'The YaarWiner invitation code is 24348109027. Use it during registration to unlock up to ₹100 welcome bonus.',
   },
   {
     q: 'Can I use multiple accounts?',
@@ -400,21 +404,21 @@ export default function HomeClient() {
               </div>
 
               <h1 className='font-heading font-extrabold text-[clamp(1.7rem,5vw,3.4rem)] leading-[1.15] text-[--color-yw-text-primary] mb-4 sm:mb-5 tracking-tight'>
-                Yaar Win App Download —{' '}
+                Yaar Winer App Download —{' '}
                 <span className='text-gradient'>Latest Version,</span> Bonus &
                 Features
               </h1>
 
               <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.75] mb-7 sm:mb-8 max-w-[520px]'>
-                Yaar Win is India's fastest-growing online gaming app. Download
-                the latest APK, claim your ₹100 welcome bonus, and explore
-                Wingo, Aviator, K3, 5D, and Jili Slots in one lightweight 12 MB
-                app.
+                Yaar Winer is India's fastest-growing online gaming app.
+                Download the latest APK, claim your ₹100 welcome bonus, and
+                explore Wingo, Aviator, K3, 5D, and Jili Slots in one
+                lightweight 12 MB app.
               </p>
 
               <div className='flex flex-col sm:flex-row flex-wrap gap-3 mb-7 sm:mb-9'>
                 <a
-                  href='https://4yaarwin.com/#/register?invitationCode=24348109027'
+                  href='https://www.yaarwin14.com/#/register?invitationCode=67868138834'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='btn btn-primary btn-lg text-center'
@@ -455,7 +459,7 @@ export default function HomeClient() {
                 </div>
                 <div>
                   <div className='font-heading font-bold text-base sm:text-lg text-[--color-yw-text-primary]'>
-                    Yaar Win
+                    Yaar Winer
                   </div>
                   <div className='text-xs text-[--color-yw-text-muted]'>
                     Online Gaming App
@@ -480,7 +484,7 @@ export default function HomeClient() {
               ))}
 
               <a
-                href='https://4yaarwin.com/#/register?invitationCode=24348109027'
+                href='https://www.yaarwin14.com/#/register?invitationCode=67868138834'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='btn btn-primary w-full justify-center mt-5 py-3 text-sm rounded-[10px]'
@@ -499,16 +503,16 @@ export default function HomeClient() {
           <div className='order-2 lg:order-1 animate-slide-left'>
             <SectionLabel>The App</SectionLabel>
             <h2 className='font-heading font-bold text-[clamp(1.4rem,3vw,2.2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
-              Yaar Win Game App
+              Yaar Winer Game App
             </h2>
             <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.75] mb-6'>
-              Yaar Win is a secure online gaming platform where users can
+              Yaar Winer is a secure online gaming platform where users can
               explore Wingo, K3, 5D, Poker, Slots, and Aviator — and play to
               earn real rewards through skill-based gameplay, all from a
               lightweight 12 MB app.
             </p>
             <a
-              href='https://4yaarwin.com/#/register?invitationCode=24348109027'
+              href='https://www.yaarwin14.com/#/register?invitationCode=67868138834'
               target='_blank'
               rel='noopener noreferrer'
               className='btn btn-primary'
@@ -523,7 +527,7 @@ export default function HomeClient() {
           >
             <Image
               src='/yaar-win-300x300.jpeg'
-              alt='YaarWin Logo'
+              alt='YaarWiner Logo'
               width={300}
               height={300}
               className='object-contain rounded-2xl w-full h-auto'
@@ -539,10 +543,10 @@ export default function HomeClient() {
             <div className='animate-slide-left'>
               <SectionLabel>Quick Start</SectionLabel>
               <h2 className='font-heading font-bold text-[clamp(1.4rem,3.5vw,2.4rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
-                Why Choose Yaar Game?
+                Why Choose Yaar Winer Game?
               </h2>
               <p className='text-[15px] text-[--color-yw-text-muted] mt-3 leading-[1.75]'>
-                Yaar Win is a modern and fast-growing online gaming platform
+                Yaar Winer is a modern and fast-growing online gaming platform
                 offering Wingo, K3, 5D, Slots, Plinko, Limbo, Rummy, and Aviator
                 — for every type of player.
               </p>
@@ -550,7 +554,7 @@ export default function HomeClient() {
             {/* ✅ Fixed: phone screenshot, max 180px */}
             <PhoneImg
               src='/yaarwin-383x1024.png'
-              alt='YaarWin App Preview'
+              alt='YaarWiner App Preview'
               w={383}
               h={1024}
               className='max-w-[180px]'
@@ -594,13 +598,13 @@ export default function HomeClient() {
               {/* ✅ Fixed: phone image capped at 160px */}
               <PhoneImg
                 src='/yaarwin-game-432x1024.png'
-                alt='YaarWin Register Screen'
+                alt='YaarWiner Register Screen'
                 w={432}
                 h={1024}
                 className='max-w-[160px] mb-5'
               />
               <h3 className='font-heading font-bold text-[17px] text-[--color-yw-text-primary] mb-4 text-center'>
-                How to Register on Yaar Win Club
+                How to Register on Yaar Winer Club
               </h3>
               <ol className='flex flex-col gap-3'>
                 {[
@@ -634,17 +638,17 @@ export default function HomeClient() {
             <div className='card'>
               <PhoneImg
                 src='/yaar-win-489x1024.png'
-                alt='YaarWin Login Screen'
+                alt='YaarWiner Login Screen'
                 w={489}
                 h={1024}
                 className='max-w-[160px] mb-5'
               />
               <h3 className='font-heading font-bold text-[17px] text-[--color-yw-text-primary] mb-4 text-center'>
-                YaarWin Game Login — How to Sign In
+                YaarWiner Game Login — How to Sign In
               </h3>
               <ol className='flex flex-col gap-3'>
                 {[
-                  'Open the official YaarWin app or trusted website',
+                  'Open the official YaarWiner app or trusted website',
                   'Tap the Login option on the homepage',
                   'Enter your registered mobile number and password',
                   'Click Sign In to access your account instantly',
@@ -684,7 +688,7 @@ export default function HomeClient() {
           <div className='text-center mb-10 sm:mb-14'>
             <SectionLabel>Game Library</SectionLabel>
             <h2 className='font-heading font-bold text-[clamp(1.4rem,3.5vw,2.4rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
-              Game Categories on YaarWin
+              Game Categories on YaarWiner
             </h2>
             <p className='text-[15px] text-[--color-yw-text-muted] max-w-[500px] mx-auto mt-3'>
               A wide range of categories designed to suit every player's
@@ -720,7 +724,7 @@ export default function HomeClient() {
             <div className='order-2 lg:order-1 animate-slide-left w-full'>
               <Image
                 src='/yaar-win-1-768x512.jpeg'
-                alt='YaarWin App Screens'
+                alt='YaarWiner App Screens'
                 width={768}
                 height={512}
                 className='object-contain rounded-2xl w-full h-auto'
@@ -729,10 +733,10 @@ export default function HomeClient() {
             <div className='order-1 lg:order-2 text-center lg:text-left animate-slide-right'>
               <SectionLabel>APK Download</SectionLabel>
               <h2 className='font-heading font-bold text-[clamp(1.4rem,3.5vw,2.4rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
-                Yaar Win APK Download — Latest 2026
+                Yaar Winer APK Download — Latest 2026
               </h2>
               <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.75] max-w-[520px] mx-auto lg:mx-0'>
-                The Yaar Win app is not on Google Play Store. Download the APK
+                The Yaar Winer app is not on Google Play Store. Download the APK
                 safely from the official website in 4 simple steps.
               </p>
             </div>
@@ -762,7 +766,7 @@ export default function HomeClient() {
           {/* ✅ Fixed: phone screenshot max 180px */}
           <PhoneImg
             src='/yaar-win-games-466x1024.png'
-            alt='YaarWin Games Screen'
+            alt='YaarWiner Games Screen'
             w={466}
             h={1024}
             className='max-w-[180px] mb-8'
@@ -770,12 +774,12 @@ export default function HomeClient() {
 
           <div className='text-center'>
             <a
-              href='https://4yaarwin.com/#/register?invitationCode=24348109027'
+              href='https://www.yaarwin14.com/#/register?invitationCode=67868138834'
               target='_blank'
               rel='noopener noreferrer'
               className='btn btn-primary btn-lg'
             >
-              📥 Download Yaar Win APK
+              📥 Download Yaar Winer APK
             </a>
           </div>
         </div>
@@ -794,12 +798,12 @@ export default function HomeClient() {
                 How to Play Wingo Colour Prediction
               </h2>
               <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.75] mb-6'>
-                Wingo is the most popular game on Yaar Win — quick colour/number
-                predictions with 30-second to 5-minute rounds.
+                Wingo is the most popular game on Yaar Winer — quick
+                colour/number predictions with 30-second to 5-minute rounds.
               </p>
               <ol className='flex flex-col gap-3 mb-6'>
                 {[
-                  'Log in to your Yaar Win account',
+                  'Log in to your Yaar Winer account',
                   'Open the Wingo section from the main dashboard',
                   'Select a round duration (30 s / 1 min / 3 min / 5 min)',
                   'Choose Colour (Red, Green, Violet) or Number (0–9)',
@@ -826,7 +830,7 @@ export default function HomeClient() {
             </div>
             <PhoneImg
               src='/yaarwin-app-683x1024.jpeg'
-              alt='YaarWin Wingo Game'
+              alt='YaarWiner Wingo Game'
               w={683}
               h={1024}
               className='max-w-[200px]'
@@ -836,7 +840,7 @@ export default function HomeClient() {
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start'>
             <PhoneImg
               src='/yaarwin-games-393x1024.png'
-              alt='YaarWin Games Screen'
+              alt='YaarWiner Games Screen'
               w={393}
               h={1024}
               className='max-w-[180px]'
@@ -871,7 +875,7 @@ export default function HomeClient() {
               <div className='mt-5 p-3.5 bg-[--color-yw-white-tint] rounded-xl border border-[rgba(0,200,83,0.2)]'>
                 <p className='text-[12px] text-[--color-yw-text-muted] text-center leading-relaxed'>
                   Game results are generated automatically. Winnings credited
-                  instantly to your Yaar Win wallet.
+                  instantly to your Yaar Winer wallet.
                 </p>
               </div>
             </div>
@@ -885,7 +889,7 @@ export default function HomeClient() {
           <div className='text-center mb-10 sm:mb-14'>
             <SectionLabel>Transactions</SectionLabel>
             <h2 className='font-heading font-bold text-[clamp(1.4rem,3.5vw,2.4rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
-              Deposit & Withdrawal on Yaar Win
+              Deposit & Withdrawal on Yaar Winer
             </h2>
           </div>
 
@@ -901,7 +905,7 @@ export default function HomeClient() {
                   ['Methods', 'UPI / QR'],
                 ],
                 steps: [
-                  'Open Yaar Win app and log in',
+                  'Open Yaar Winer app and log in',
                   'Go to Wallet or Recharge section',
                   'Tap Deposit or Add Balance',
                   'Enter the amount you want to add',
@@ -919,7 +923,7 @@ export default function HomeClient() {
                   ['Processing', 'Minutes'],
                 ],
                 steps: [
-                  'Log in to your Yaar Win account',
+                  'Log in to your Yaar Winer account',
                   'Navigate to Wallet or Withdraw section',
                   'Choose Bank Account or UPI ID',
                   'Enter the withdrawal amount',
@@ -939,7 +943,7 @@ export default function HomeClient() {
                   {/* ✅ Fixed: phone screenshot capped at 140px */}
                   <PhoneImg
                     src='/yaarwin-game-app-499x1024.png'
-                    alt='YaarWin Wallet Screen'
+                    alt='YaarWiner Wallet Screen'
                     w={499}
                     h={1024}
                     className='max-w-[140px] mb-5'
@@ -993,7 +997,7 @@ export default function HomeClient() {
             <div className='grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-5 sm:gap-6 items-center'>
               <PhoneImg
                 src='/yaar-win-game-464x1024.png'
-                alt='YaarWin Bank Account Screen'
+                alt='YaarWiner Bank Account Screen'
                 w={464}
                 h={1024}
                 className='max-w-[140px]'
@@ -1004,7 +1008,7 @@ export default function HomeClient() {
                 </h3>
                 <ol className='flex flex-col gap-2'>
                   {[
-                    'Login to your Yaar Win account',
+                    'Login to your Yaar Winer account',
                     'Go to Wallet or Profile section',
                     'Select "Add Bank Account" option',
                     'Enter account holder name, bank, account no. & IFSC',
@@ -1032,11 +1036,11 @@ export default function HomeClient() {
             <div className='animate-slide-left'>
               <SectionLabel>Refer & Earn</SectionLabel>
               <h2 className='font-heading font-bold text-[clamp(1.4rem,3vw,2.2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
-                YaarWin Grand Referral Event 2026
+                YaarWiner Grand Referral Event 2026
               </h2>
               <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.75] mb-5'>
-                Invite friends to join YaarWin and climb the leaderboard to win
-                luxury prizes — including a{' '}
+                Invite friends to join YaarWiner and climb the leaderboard to
+                win luxury prizes — including a{' '}
                 <strong className='text-[--color-yw-text-primary]'>
                   Mercedes-Benz A-Class Limousine worth ₹55 Lakh!
                 </strong>
@@ -1087,7 +1091,7 @@ export default function HomeClient() {
           <div className='grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-6 sm:gap-8 items-center card'>
             <PhoneImg
               src='/yaarwin-login-491x1024.png'
-              alt='YaarWin Referral Screen'
+              alt='YaarWiner Referral Screen'
               w={491}
               h={1024}
               className='max-w-[140px]'
@@ -1125,7 +1129,7 @@ export default function HomeClient() {
             <div>
               <SectionLabel>Bonus Codes</SectionLabel>
               <h2 className='font-heading font-bold text-[clamp(1.3rem,3vw,2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
-                How to Use a YaarWin Gift Code
+                How to Use a YaarWiner Gift Code
               </h2>
               <p className='text-[14px] text-[--color-yw-text-muted] leading-[1.75] mb-6'>
                 Using a gift code is a simple way to unlock bonus rewards,
@@ -1153,7 +1157,7 @@ export default function HomeClient() {
             </div>
             <PhoneImg
               src='/yaar-win-apk-489x1024.png'
-              alt='YaarWin Gift Code Screen'
+              alt='YaarWiner Gift Code Screen'
               w={489}
               h={1024}
               className='max-w-[140px] order-first lg:order-last'
@@ -1168,7 +1172,7 @@ export default function HomeClient() {
           <div className='text-center mb-10 sm:mb-12'>
             <SectionLabel>Also Worth Knowing</SectionLabel>
             <h2 className='font-heading font-bold text-[clamp(1.4rem,3vw,2.2rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
-              Popular YaarWin Alternatives
+              Popular YaarWiner Alternatives
             </h2>
             <p className='text-[14px] text-[--color-yw-text-muted] max-w-[480px] mx-auto mt-3'>
               Users searching for similar platforms often explore these
@@ -1210,11 +1214,11 @@ export default function HomeClient() {
       >
         <div className='max-w-[860px] mx-auto'>
           <h2 className='font-heading font-bold text-[clamp(1.2rem,3vw,1.8rem)] text-[--color-yw-text-primary] mb-4 tracking-tight'>
-            🛡️ Responsible Gaming on Yaar Win
+            🛡️ Responsible Gaming on Yaar Winer
           </h2>
           <p className='text-[14px] text-[--color-yw-text-muted] leading-[1.75] mb-5'>
-            Playing on YaarWin should always be safe, controlled, and enjoyable.
-            Always play for entertainment purposes only.
+            Playing on YaarWiner should always be safe, controlled, and
+            enjoyable. Always play for entertainment purposes only.
           </p>
           <div className='flex flex-wrap gap-2 sm:gap-2.5 mb-5'>
             {[
@@ -1247,21 +1251,21 @@ export default function HomeClient() {
         <div className='max-w-[860px] mx-auto text-center'>
           <SectionLabel>Conclusion</SectionLabel>
           <h2 className='font-heading font-bold text-[clamp(1.4rem,3vw,2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
-            Is YaarWin Worth Playing?
+            Is YaarWiner Worth Playing?
           </h2>
           <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.8] max-w-[700px] mx-auto mb-8'>
-            YaarWin offers a wide variety of games, a smooth registration
+            YaarWiner offers a wide variety of games, a smooth registration
             process, fast withdrawals, and regular referral bonuses. With its
             lightweight 12 MB APK and mobile-first design, it's accessible to
             users across India. Always play responsibly and within your limits.
           </p>
           <a
-            href='https://4yaarwin.com/#/register?invitationCode=24348109027'
+            href='https://www.yaarwin14.com/#/register?invitationCode=67868138834'
             target='_blank'
             rel='noopener noreferrer'
             className='btn btn-primary btn-lg'
           >
-            🎮 Register on YaarWin Free
+            🎮 Register on YaarWiner Free
           </a>
         </div>
       </section>

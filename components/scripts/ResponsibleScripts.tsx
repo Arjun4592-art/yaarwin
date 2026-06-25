@@ -221,7 +221,10 @@ export default function ResponsibleScripts() {
               boundaries, and keep your account safe. Play smart, spend wisely,
               and always put your personal safety first.
             </p>
-            <Link href='/' className='btn btn-primary'>
+            <Link
+              href='https://www.yaarwin14.com/#/register?invitationCode=67868138834'
+              className='btn btn-primary'
+            >
               Play Responsibly — Get Started →
             </Link>
           </div>

@@ -60,7 +60,7 @@ export default function Footer() {
             </p>
 
             <a
-              href='https://4yaarwin.com/#/register?invitationCode=24348109027'
+              href='https://www.yaarwin14.com/#/register?invitationCode=67868138834'
               target='_blank'
               rel='noopener noreferrer'
               className='btn btn-primary btn-sm'
@@ -97,16 +97,16 @@ export default function Footer() {
             </h4>
             <div className='flex flex-col gap-3 mb-6'>
               <a
-                href='mailto:support@yaarwin.game'
+                href='mailto:support@yaarwiner.com'
                 className='text-[13px] text-[var(--color-yw-text-muted)] no-underline hover:text-[var(--color-yw-text-primary)] transition-colors duration-200'
               >
-                📧 support@yaarwin.game
+                📧 support@yaarwiner.com
               </a>
               <a
-                href='https://yaarwin.game'
+                href='https://yaarwiner.com'
                 className='text-[13px] text-[var(--color-yw-text-muted)] no-underline hover:text-[var(--color-yw-text-primary)] transition-colors duration-200'
               >
-                🌐 yaarwin.game
+                🌐 yaarwiner.com
               </a>
             </div>
 
@@ -120,7 +120,7 @@ export default function Footer() {
                 <br />
                 Invite Code:{' '}
                 <span className='text-[var(--color-yw-green)] font-semibold'>
-                  24348109027
+                  67868138834
                 </span>
               </div>
             </div>
