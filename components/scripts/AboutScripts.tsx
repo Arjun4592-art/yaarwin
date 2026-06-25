@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import Link from 'next/link'
 
 const whatWeProvide = [
@@ -90,10 +91,13 @@ export default function AboutScripts() {
                   aria-hidden
                   className='absolute inset-0 opacity-60 [background-image:radial-gradient(circle,rgba(0,200,83,0.15)_1px,transparent_1px)] [background-size:18px_18px]'
                 />
-                <span className='relative text-3xl'>🖼️</span>
-                <span className='relative text-[11px] font-semibold uppercase tracking-wider text-[var(--color-yw-green-deep)] text-center px-4'>
-                  Logo — cropped-yaar-win.jpeg
-                </span>
+                <Image
+                  src='/yaar-win-300x300.jpeg'
+                  alt='YaarWin Logo'
+                  width={320}
+                  height={320}
+                  className='object-contain'
+                />
               </div>
             </div>
           </div>

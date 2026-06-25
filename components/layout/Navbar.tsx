@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 
 const blogLinks = [
   {
@@ -135,12 +136,13 @@ export default function Navbar() {
         <nav className='max-w-[1200px] mx-auto px-6 h-[68px] flex items-center justify-between'>
           {/* Logo */}
           <Link href='/' className='flex items-center gap-2.5 no-underline'>
-            <span className='w-9 h-9 rounded-[10px] flex items-center justify-center shrink-0 font-[var(--yw-font-heading)] font-extrabold text-base text-[#003d18] bg-gradient-to-br from-[#00c853] to-[#69f0ae] shadow-[var(--yw-shadow-green-sm)] animate-pulse-glow'>
-              YW
-            </span>
-            <span className='font-[var(--yw-font-heading)] font-bold text-xl text-[var(--color-yw-text-primary)] tracking-tight'>
-              Yaar<span className='text-[var(--color-yw-green)]'>Win</span>
-            </span>
+            <Image
+              src='/logo.png'
+              alt='YaarWin Logo'
+              width={100}
+              height={36}
+              className='object-contain'
+            />
           </Link>
 
           {/* Desktop Nav */}

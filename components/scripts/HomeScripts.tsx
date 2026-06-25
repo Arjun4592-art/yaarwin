@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 /* ─────────────────────────── DATA ─────────────────────────── */
 
@@ -45,6 +46,16 @@ const gameCategories = [
     icon: '🎰',
     title: 'Jili Slots',
     desc: "Extensive slot library from Asia's top provider — classic reels to feature-rich video slots.",
+  },
+  {
+    icon: '🪃',
+    title: 'Plinko',
+    desc: 'Drop a ball down a pegged board and watch it bounce to a prize multiplier. Pure excitement.',
+  },
+  {
+    icon: '🃏',
+    title: 'Rummy & Card Games',
+    desc: 'Classic card and arcade-style games for players who enjoy skill-based, casual gameplay.',
   },
 ]
 
@@ -160,8 +171,16 @@ const faqs = [
     a: 'No. Download the APK directly from the official website yaarwin.game. This is standard for Indian gaming apps.',
   },
   {
+    q: 'Is YaarWin Game safe to use?',
+    a: 'Yes, YaarWin uses secure login, OTP verification, and encrypted transactions. Always use the official site yaarwin.game to stay safe.',
+  },
+  {
     q: 'What is the minimum withdrawal amount?',
     a: 'The minimum withdrawal starts from around ₹100, though it may vary depending on platform rules and account level.',
+  },
+  {
+    q: 'How many withdrawal requests can I make daily?',
+    a: 'The platform allows multiple withdrawal requests daily. Processing is typically completed within minutes to a few hours.',
   },
   {
     q: 'What payment methods are available?',
@@ -235,57 +254,17 @@ const trustBadges = [
   '🔒 18+ Safe Play',
 ]
 
-/* ─────────────────────────── IMAGE PLACEHOLDER ─────────────────────────── */
-/**
- * Drop-in placeholder for every spot the live site has a screenshot/image.
- * Swap the wrapping element for a Next <Image> once real assets are ready —
- * the aspect ratio + label make it obvious what belongs where.
- */
-function ImagePlaceholder({
-  label,
-  ratio = 'aspect-square',
-  className = '',
-}: {
-  label: string
-  ratio?: string
-  className?: string
-}) {
-  return (
-    <div
-      className={`relative w-full ${ratio} rounded-2xl flex flex-col items-center justify-center gap-2 overflow-hidden ${className}`}
-      style={{
-        background: 'var(--yw-gradient-soft)',
-        border: '1.5px dashed rgba(0,200,83,0.35)',
-      }}
-    >
-      <div
-        aria-hidden
-        className='absolute inset-0 opacity-60'
-        style={{
-          backgroundImage:
-            'radial-gradient(circle, rgba(0,200,83,0.15) 1px, transparent 1px)',
-          backgroundSize: '18px 18px',
-        }}
-      />
-      <span className='relative text-3xl'>🖼️</span>
-      <span className='relative text-[11px] font-semibold uppercase tracking-wider text-[--color-yw-green-deep] text-center px-4'>
-        {label}
-      </span>
-    </div>
-  )
-}
-
 /* ─────────────────────────── FAQ ACCORDION ─────────────────────────── */
 function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   return (
-    <section className='py-24 px-6 bg-[--color-yw-off-white]'>
+    <section className='py-16 sm:py-24 px-4 sm:px-6 bg-[--color-yw-off-white]'>
       <div className='max-w-[800px] mx-auto'>
-        <div className='text-center mb-12'>
+        <div className='text-center mb-10 sm:mb-12'>
           <span className='text-xs font-semibold tracking-[0.1em] uppercase text-[--color-yw-green]'>
             FAQ
           </span>
-          <h2 className='font-heading font-bold text-[clamp(1.6rem,3.5vw,2.2rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
+          <h2 className='font-heading font-bold text-[clamp(1.4rem,4vw,2.2rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
             Frequently Asked Questions
           </h2>
         </div>
@@ -302,7 +281,7 @@ function FaqAccordion() {
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className='w-full flex items-center justify-between gap-4 px-5 py-4 bg-transparent border-none cursor-pointer text-left'
+                  className='w-full flex items-center justify-between gap-3 px-4 sm:px-5 py-4 bg-transparent border-none cursor-pointer text-left'
                 >
                   <span className='font-heading font-semibold text-sm text-[--color-yw-text-primary] leading-relaxed'>
                     {q}
@@ -330,7 +309,7 @@ function FaqAccordion() {
                   style={{ maxHeight: isOpen ? 200 : 0 }}
                 >
                   <p
-                    className='m-0 px-5 pb-5 pt-0 text-[13px] text-[--color-yw-text-muted] leading-[1.75] border-t border-[--color-yw-white-border]'
+                    className='m-0 px-4 sm:px-5 pb-5 text-[13px] text-[--color-yw-text-muted] leading-[1.75] border-t border-[--color-yw-white-border]'
                     style={{ paddingTop: 14 }}
                   >
                     {a}
@@ -354,19 +333,49 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   )
 }
 
+/* ─────────────────────────── APP IMAGE (mobile-safe) ─────────────────────────── */
+/** Phone screenshot wrapper — constrains width on mobile so images don't overflow */
+function PhoneImg({
+  src,
+  alt,
+  w = 300,
+  h = 640,
+  className = '',
+}: {
+  src: string
+  alt: string
+  w?: number
+  h?: number
+  className?: string
+}) {
+  return (
+    <div
+      className={`mx-auto w-full ${className}`}
+      style={{ maxWidth: Math.min(w, 240) }}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={w}
+        height={h}
+        className='object-contain rounded-2xl w-full h-auto'
+      />
+    </div>
+  )
+}
+
 /* ─────────────────────────── MAIN COMPONENT ─────────────────────────── */
 export default function HomeClient() {
   return (
     <div className='font-body text-[--color-yw-text-primary] bg-[--color-yw-off-white] overflow-x-hidden'>
       {/* ══════════════ HERO ══════════════ */}
       <section
-        className='min-h-screen flex items-center px-6 pt-[120px] pb-20 relative overflow-hidden'
+        className='min-h-screen flex items-center px-4 sm:px-6 pt-[100px] sm:pt-[120px] pb-16 sm:pb-20 relative overflow-hidden'
         style={{
           background:
             'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,200,83,0.13) 0%, transparent 70%), var(--color-yw-off-white)',
         }}
       >
-        {/* dot grid */}
         <div
           aria-hidden
           className='absolute inset-0 pointer-events-none'
@@ -376,13 +385,11 @@ export default function HomeClient() {
             backgroundSize: '40px 40px',
           }}
         />
-
         <div className='max-w-[1200px] mx-auto w-full relative'>
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-14 items-center'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center'>
             {/* Left */}
             <div className='animate-fade-in-up'>
-              {/* live pill */}
-              <div className='inline-flex items-center gap-2 bg-[--color-yw-white-tint] border border-[rgba(0,200,83,0.25)] rounded-full px-3.5 py-1.5 mb-6'>
+              <div className='inline-flex items-center gap-2 bg-[--color-yw-white-tint] border border-[rgba(0,200,83,0.25)] rounded-full px-3.5 py-1.5 mb-5 sm:mb-6'>
                 <span
                   className='w-1.5 h-1.5 rounded-full bg-[--color-yw-green]'
                   style={{ animation: 'yw-pulse-dot 2s infinite' }}
@@ -392,37 +399,37 @@ export default function HomeClient() {
                 </span>
               </div>
 
-              <h1 className='font-heading font-extrabold text-[clamp(2rem,5vw,3.4rem)] leading-[1.15] text-[--color-yw-text-primary] mb-5 tracking-tight'>
+              <h1 className='font-heading font-extrabold text-[clamp(1.7rem,5vw,3.4rem)] leading-[1.15] text-[--color-yw-text-primary] mb-4 sm:mb-5 tracking-tight'>
                 Yaar Win App Download —{' '}
                 <span className='text-gradient'>Latest Version,</span> Bonus &
                 Features
               </h1>
 
-              <p className='text-base text-[--color-yw-text-muted] leading-[1.75] mb-8 max-w-[520px]'>
+              <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.75] mb-7 sm:mb-8 max-w-[520px]'>
                 Yaar Win is India's fastest-growing online gaming app. Download
                 the latest APK, claim your ₹100 welcome bonus, and explore
                 Wingo, Aviator, K3, 5D, and Jili Slots in one lightweight 12 MB
                 app.
               </p>
 
-              <div className='flex flex-wrap gap-3 mb-9'>
+              <div className='flex flex-col sm:flex-row flex-wrap gap-3 mb-7 sm:mb-9'>
                 <a
                   href='https://4yaarwin.com/#/register?invitationCode=24348109027'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='btn btn-primary btn-lg'
+                  className='btn btn-primary btn-lg text-center'
                 >
                   🎮 Download & Register Free
                 </a>
                 <Link
                   href='/blogs/yaarwin-game-app-download'
-                  className='btn btn-ghost btn-lg'
+                  className='btn btn-ghost btn-lg text-center'
                 >
                   APK Guide →
                 </Link>
               </div>
 
-              <div className='flex flex-wrap gap-4'>
+              <div className='flex flex-wrap gap-3 sm:gap-4'>
                 {trustBadges.map((b) => (
                   <span
                     key={b}
@@ -436,9 +443,9 @@ export default function HomeClient() {
 
             {/* Right — App Details Card */}
             <div className='card animate-slide-right'>
-              <div className='flex items-center gap-3.5 mb-6 pb-5 border-b border-[--color-yw-white-border]'>
+              <div className='flex items-center gap-3 sm:gap-3.5 mb-5 sm:mb-6 pb-4 sm:pb-5 border-b border-[--color-yw-white-border]'>
                 <div
-                  className='w-14 h-14 rounded-2xl flex items-center justify-center font-heading font-extrabold text-xl text-[#003d18] shrink-0'
+                  className='w-12 sm:w-14 h-12 sm:h-14 rounded-2xl flex items-center justify-center font-heading font-extrabold text-lg sm:text-xl text-[#003d18] shrink-0'
                   style={{
                     background: 'var(--yw-gradient-primary)',
                     boxShadow: 'var(--yw-shadow-green-sm)',
@@ -447,7 +454,7 @@ export default function HomeClient() {
                   YW
                 </div>
                 <div>
-                  <div className='font-heading font-bold text-lg text-[--color-yw-text-primary]'>
+                  <div className='font-heading font-bold text-base sm:text-lg text-[--color-yw-text-primary]'>
                     Yaar Win
                   </div>
                   <div className='text-xs text-[--color-yw-text-muted]'>
@@ -483,16 +490,15 @@ export default function HomeClient() {
             </div>
           </div>
         </div>
-
         <style>{`@keyframes yw-pulse-dot{0%,100%{opacity:1}50%{opacity:0.35}}`}</style>
       </section>
 
-      {/* ══════════════ APP SHOWCASE (yaar-win 300x300 img) ══════════════ */}
-      <section className='py-20 px-6 bg-white'>
-        <div className='max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+      {/* ══════════════ APP SHOWCASE ══════════════ */}
+      <section className='py-16 sm:py-20 px-4 sm:px-6 bg-white'>
+        <div className='max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center'>
           <div className='order-2 lg:order-1 animate-slide-left'>
             <SectionLabel>The App</SectionLabel>
-            <h2 className='font-heading font-bold text-[clamp(1.5rem,3vw,2.2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
+            <h2 className='font-heading font-bold text-[clamp(1.4rem,3vw,2.2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
               Yaar Win Game App
             </h2>
             <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.75] mb-6'>
@@ -510,39 +516,48 @@ export default function HomeClient() {
               Register & Download →
             </a>
           </div>
-          <div className='order-1 lg:order-2 animate-scale-in max-w-[320px] mx-auto w-full'>
-            <ImagePlaceholder
-              label='App Icon — yaar-win.jpeg'
-              ratio='aspect-square'
+          {/* ✅ Fixed: square image, capped at 200px on mobile */}
+          <div
+            className='order-1 lg:order-2 animate-scale-in mx-auto w-full'
+            style={{ maxWidth: 220 }}
+          >
+            <Image
+              src='/yaar-win-300x300.jpeg'
+              alt='YaarWin Logo'
+              width={300}
+              height={300}
+              className='object-contain rounded-2xl w-full h-auto'
             />
           </div>
         </div>
       </section>
 
       {/* ══════════════ HOW IT WORKS ══════════════ */}
-      <section className='py-24 px-6 bg-[--color-yw-off-white]'>
+      <section className='py-16 sm:py-24 px-4 sm:px-6 bg-[--color-yw-off-white]'>
         <div className='max-w-[1100px] mx-auto'>
-          <div className='grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-14 items-center mb-16'>
+          <div className='grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center mb-12 sm:mb-16'>
             <div className='animate-slide-left'>
               <SectionLabel>Quick Start</SectionLabel>
-              <h2 className='font-heading font-bold text-[clamp(1.6rem,3.5vw,2.4rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
+              <h2 className='font-heading font-bold text-[clamp(1.4rem,3.5vw,2.4rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
                 Why Choose Yaar Game?
               </h2>
               <p className='text-[15px] text-[--color-yw-text-muted] mt-3 leading-[1.75]'>
                 Yaar Win is a modern and fast-growing online gaming platform
-                offering a wide variety of prediction-based and interactive
-                games such as Wingo, K3, 5D, Slots, Plinko, Limbo, and Aviator.
+                offering Wingo, K3, 5D, Slots, Plinko, Limbo, Rummy, and Aviator
+                — for every type of player.
               </p>
             </div>
-            <div className='animate-slide-right max-w-[280px] mx-auto w-full'>
-              <ImagePlaceholder
-                label='Platform Preview — yaarwin-383x1024'
-                ratio='aspect-[383/1024]'
-              />
-            </div>
+            {/* ✅ Fixed: phone screenshot, max 180px */}
+            <PhoneImg
+              src='/yaarwin-383x1024.png'
+              alt='YaarWin App Preview'
+              w={383}
+              h={1024}
+              className='max-w-[180px]'
+            />
           </div>
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5'>
             {howItWorks.map(({ step, title, desc }, i) => (
               <div
                 key={step}
@@ -571,17 +586,19 @@ export default function HomeClient() {
       </section>
 
       {/* ══════════════ REGISTER & LOGIN ══════════════ */}
-      <section className='py-24 px-6 bg-white'>
+      <section className='py-16 sm:py-24 px-4 sm:px-6 bg-white'>
         <div className='max-w-[1200px] mx-auto'>
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8'>
             {/* Register */}
             <div className='card'>
-              <div className='max-w-[200px] mx-auto mb-6 animate-scale-in'>
-                <ImagePlaceholder
-                  label='Register Steps — yaarwin-game-432x1024'
-                  ratio='aspect-[432/1024]'
-                />
-              </div>
+              {/* ✅ Fixed: phone image capped at 160px */}
+              <PhoneImg
+                src='/yaarwin-game-432x1024.png'
+                alt='YaarWin Register Screen'
+                w={432}
+                h={1024}
+                className='max-w-[160px] mb-5'
+              />
               <h3 className='font-heading font-bold text-[17px] text-[--color-yw-text-primary] mb-4 text-center'>
                 How to Register on Yaar Win Club
               </h3>
@@ -615,12 +632,13 @@ export default function HomeClient() {
 
             {/* Login */}
             <div className='card'>
-              <div className='max-w-[200px] mx-auto mb-6 animate-scale-in delay-1'>
-                <ImagePlaceholder
-                  label='Login Screen — yaar-win-489x1024'
-                  ratio='aspect-[489/1024]'
-                />
-              </div>
+              <PhoneImg
+                src='/yaar-win-489x1024.png'
+                alt='YaarWin Login Screen'
+                w={489}
+                h={1024}
+                className='max-w-[160px] mb-5'
+              />
               <h3 className='font-heading font-bold text-[17px] text-[--color-yw-text-primary] mb-4 text-center'>
                 YaarWin Game Login — How to Sign In
               </h3>
@@ -658,11 +676,14 @@ export default function HomeClient() {
       </section>
 
       {/* ══════════════ GAME CATEGORIES ══════════════ */}
-      <section id='games' className='py-24 px-6 bg-[--color-yw-off-white]'>
+      <section
+        id='games'
+        className='py-16 sm:py-24 px-4 sm:px-6 bg-[--color-yw-off-white]'
+      >
         <div className='max-w-[1200px] mx-auto'>
-          <div className='text-center mb-14'>
+          <div className='text-center mb-10 sm:mb-14'>
             <SectionLabel>Game Library</SectionLabel>
-            <h2 className='font-heading font-bold text-[clamp(1.6rem,3.5vw,2.4rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
+            <h2 className='font-heading font-bold text-[clamp(1.4rem,3.5vw,2.4rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
               Game Categories on YaarWin
             </h2>
             <p className='text-[15px] text-[--color-yw-text-muted] max-w-[500px] mx-auto mt-3'>
@@ -671,14 +692,14 @@ export default function HomeClient() {
             </p>
           </div>
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5'>
             {gameCategories.map(({ icon, title, desc }, i) => (
               <div
                 key={title}
                 className='card card-hover animate-scale-in'
                 style={{ animationDelay: `${i * 70}ms` }}
               >
-                <div className='text-3xl mb-3.5'>{icon}</div>
+                <div className='text-3xl mb-3'>{icon}</div>
                 <h3 className='font-heading font-semibold text-[15px] text-[--color-yw-text-primary] mb-2'>
                   {title}
                 </h3>
@@ -692,18 +713,22 @@ export default function HomeClient() {
       </section>
 
       {/* ══════════════ APK DOWNLOAD ══════════════ */}
-      <section className='py-24 px-6 bg-white'>
+      <section className='py-16 sm:py-24 px-4 sm:px-6 bg-white'>
         <div className='max-w-[1100px] mx-auto'>
-          <div className='grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-14 items-center mb-14'>
-            <div className='order-2 lg:order-1 max-w-[300px] mx-auto w-full animate-slide-left'>
-              <ImagePlaceholder
-                label='App Preview — yaar-win-1-1024x683'
-                ratio='aspect-[1024/683]'
+          <div className='grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-14 items-center mb-10 sm:mb-14'>
+            {/* ✅ Fixed: landscape image, full width on mobile */}
+            <div className='order-2 lg:order-1 animate-slide-left w-full'>
+              <Image
+                src='/yaar-win-1-768x512.jpeg'
+                alt='YaarWin App Screens'
+                width={768}
+                height={512}
+                className='object-contain rounded-2xl w-full h-auto'
               />
             </div>
             <div className='order-1 lg:order-2 text-center lg:text-left animate-slide-right'>
               <SectionLabel>APK Download</SectionLabel>
-              <h2 className='font-heading font-bold text-[clamp(1.6rem,3.5vw,2.4rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
+              <h2 className='font-heading font-bold text-[clamp(1.4rem,3.5vw,2.4rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
                 Yaar Win APK Download — Latest 2026
               </h2>
               <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.75] max-w-[520px] mx-auto lg:mx-0'>
@@ -713,33 +738,35 @@ export default function HomeClient() {
             </div>
           </div>
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10'>
+          <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-10'>
             {apkSteps.map(({ icon, step, title, desc }, i) => (
               <div
                 key={step}
                 className='card card-hover text-center animate-fade-in-up'
                 style={{ animationDelay: `${i * 80}ms` }}
               >
-                <div className='text-3xl mb-2.5'>{icon}</div>
+                <div className='text-2xl sm:text-3xl mb-2.5'>{icon}</div>
                 <div className='text-[11px] font-semibold uppercase tracking-widest text-[--color-yw-green] mb-1.5'>
                   {step}
                 </div>
-                <div className='font-heading font-semibold text-[14px] text-[--color-yw-text-primary] mb-2'>
+                <div className='font-heading font-semibold text-[13px] sm:text-[14px] text-[--color-yw-text-primary] mb-2'>
                   {title}
                 </div>
-                <p className='text-[12px] text-[--color-yw-text-muted] leading-relaxed'>
+                <p className='text-[11px] sm:text-[12px] text-[--color-yw-text-muted] leading-relaxed'>
                   {desc}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className='max-w-[220px] mx-auto mb-10 animate-scale-in'>
-            <ImagePlaceholder
-              label='Install Guide — yaar-win-games-466x1024'
-              ratio='aspect-[466/1024]'
-            />
-          </div>
+          {/* ✅ Fixed: phone screenshot max 180px */}
+          <PhoneImg
+            src='/yaar-win-games-466x1024.png'
+            alt='YaarWin Games Screen'
+            w={466}
+            h={1024}
+            className='max-w-[180px] mb-8'
+          />
 
           <div className='text-center'>
             <a
@@ -755,21 +782,22 @@ export default function HomeClient() {
       </section>
 
       {/* ══════════════ WINGO SECTION ══════════════ */}
-      <section id='wingo' className='py-24 px-6 bg-[--color-yw-off-white]'>
+      <section
+        id='wingo'
+        className='py-16 sm:py-24 px-4 sm:px-6 bg-[--color-yw-off-white]'
+      >
         <div className='max-w-[1200px] mx-auto'>
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-14 items-center mb-14'>
-            {/* Left text */}
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-10 sm:mb-14'>
             <div className='animate-slide-left'>
               <SectionLabel>Most Popular</SectionLabel>
-              <h2 className='font-heading font-bold text-[clamp(1.5rem,3vw,2.2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
+              <h2 className='font-heading font-bold text-[clamp(1.4rem,3vw,2.2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
                 How to Play Wingo Colour Prediction
               </h2>
-              <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.75] mb-7'>
+              <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.75] mb-6'>
                 Wingo is the most popular game on Yaar Win — quick colour/number
-                predictions with 30-second to 5-minute rounds. Results are
-                instant, winnings credited immediately.
+                predictions with 30-second to 5-minute rounds.
               </p>
-              <ol className='flex flex-col gap-3 mb-7'>
+              <ol className='flex flex-col gap-3 mb-6'>
                 {[
                   'Log in to your Yaar Win account',
                   'Open the Wingo section from the main dashboard',
@@ -796,32 +824,31 @@ export default function HomeClient() {
                 ))}
               </ol>
             </div>
-
-            {/* Right image */}
-            <div className='max-w-[320px] mx-auto w-full animate-slide-right'>
-              <ImagePlaceholder
-                label='Wingo Gameplay — yaarwin-app-683x1024'
-                ratio='aspect-[683/1024]'
-              />
-            </div>
+            <PhoneImg
+              src='/yaarwin-app-683x1024.jpeg'
+              alt='YaarWin Wingo Game'
+              w={683}
+              h={1024}
+              className='max-w-[200px]'
+            />
           </div>
 
-          {/* logic card + its own image, side by side */}
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 items-start'>
-            <div className='max-w-[300px] mx-auto w-full animate-scale-in'>
-              <ImagePlaceholder
-                label='Colour Logic — yaarwin-games-393x1024'
-                ratio='aspect-[393/1024]'
-              />
-            </div>
-            <div className='card animate-scale-in delay-1'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start'>
+            <PhoneImg
+              src='/yaarwin-games-393x1024.png'
+              alt='YaarWin Games Screen'
+              w={393}
+              h={1024}
+              className='max-w-[180px]'
+            />
+            <div className='card animate-scale-in'>
               <h3 className='font-heading font-bold text-[17px] text-[--color-yw-text-primary] mb-6 text-center'>
                 🎯 Wingo Colour & Number Logic
               </h3>
               {wingoLogic.map(({ color, bg, border, label, numbers }) => (
                 <div
                   key={label}
-                  className='flex items-center justify-between px-5 py-4 rounded-xl mb-3 last:mb-0'
+                  className='flex items-center justify-between px-4 sm:px-5 py-4 rounded-xl mb-3 last:mb-0'
                   style={{ background: bg, border: `1px solid ${border}` }}
                 >
                   <div className='flex items-center gap-3'>
@@ -853,24 +880,22 @@ export default function HomeClient() {
       </section>
 
       {/* ══════════════ DEPOSIT & WITHDRAWAL ══════════════ */}
-      <section className='py-24 px-6 bg-white'>
+      <section className='py-16 sm:py-24 px-4 sm:px-6 bg-white'>
         <div className='max-w-[1200px] mx-auto'>
-          <div className='text-center mb-14'>
+          <div className='text-center mb-10 sm:mb-14'>
             <SectionLabel>Transactions</SectionLabel>
-            <h2 className='font-heading font-bold text-[clamp(1.6rem,3.5vw,2.4rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
+            <h2 className='font-heading font-bold text-[clamp(1.4rem,3.5vw,2.4rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
               Deposit & Withdrawal on Yaar Win
             </h2>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-10'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mb-8 sm:mb-10'>
             {[
               {
                 title: '💰 How to Deposit Money',
+                accentText: 'text-[--color-yw-green]',
                 accent: 'rgba(0,200,83,0.08)',
                 accentBorder: 'rgba(0,200,83,0.18)',
-                accentText: 'text-[--color-yw-green]',
-                imgLabel: 'Deposit Flow — yaarwin-game-app-499x1024',
-                imgRatio: 'aspect-[499/1024]',
                 meta: [
                   ['Min. Deposit', '₹50'],
                   ['Methods', 'UPI / QR'],
@@ -886,11 +911,9 @@ export default function HomeClient() {
               },
               {
                 title: '🏦 How to Withdraw Money',
+                accentText: 'text-[#0ea5e9]',
                 accent: 'rgba(41,182,246,0.08)',
                 accentBorder: 'rgba(41,182,246,0.18)',
-                accentText: 'text-[#0ea5e9]',
-                imgLabel: 'Withdrawal Flow — yaar-win-game-app-487x1024',
-                imgRatio: 'aspect-[487/1024]',
                 meta: [
                   ['Min. Withdrawal', '~₹100'],
                   ['Processing', 'Minutes'],
@@ -906,25 +929,21 @@ export default function HomeClient() {
               },
             ].map(
               (
-                {
-                  title,
-                  accent,
-                  accentBorder,
-                  accentText,
-                  meta,
-                  steps,
-                  imgLabel,
-                  imgRatio,
-                },
+                { title, accent, accentBorder, accentText, meta, steps },
                 idx,
               ) => (
                 <div
                   key={title}
                   className={`card animate-fade-in-up ${idx === 1 ? 'delay-2' : ''}`}
                 >
-                  <div className='max-w-[180px] mx-auto mb-5'>
-                    <ImagePlaceholder label={imgLabel} ratio={imgRatio} />
-                  </div>
+                  {/* ✅ Fixed: phone screenshot capped at 140px */}
+                  <PhoneImg
+                    src='/yaarwin-game-app-499x1024.png'
+                    alt='YaarWin Wallet Screen'
+                    w={499}
+                    h={1024}
+                    className='max-w-[140px] mb-5'
+                  />
                   <h3 className='font-heading font-semibold text-[17px] text-[--color-yw-text-primary] mb-5'>
                     {title}
                   </h3>
@@ -943,7 +962,7 @@ export default function HomeClient() {
                       </li>
                     ))}
                   </ol>
-                  <div className='flex gap-4 flex-wrap'>
+                  <div className='flex gap-3 sm:gap-4 flex-wrap'>
                     {meta.map(([k, v]) => (
                       <div
                         key={k}
@@ -971,13 +990,14 @@ export default function HomeClient() {
 
           {/* Add bank account */}
           <div className='card max-w-[800px] mx-auto'>
-            <div className='grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-6 items-center'>
-              <div className='animate-scale-in'>
-                <ImagePlaceholder
-                  label='Bank Setup — yaar-win-game-464x1024'
-                  ratio='aspect-[464/1024]'
-                />
-              </div>
+            <div className='grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-5 sm:gap-6 items-center'>
+              <PhoneImg
+                src='/yaar-win-game-464x1024.png'
+                alt='YaarWin Bank Account Screen'
+                w={464}
+                h={1024}
+                className='max-w-[140px]'
+              />
               <div>
                 <h3 className='font-heading font-semibold text-[16px] text-[--color-yw-text-primary] mb-3'>
                   How to Add Bank Account
@@ -1006,23 +1026,22 @@ export default function HomeClient() {
       </section>
 
       {/* ══════════════ REFER & EARN ══════════════ */}
-      <section className='py-24 px-6 bg-[--color-yw-off-white]'>
+      <section className='py-16 sm:py-24 px-4 sm:px-6 bg-[--color-yw-off-white]'>
         <div className='max-w-[1200px] mx-auto'>
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-14'>
-            {/* Left */}
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-start mb-10 sm:mb-14'>
             <div className='animate-slide-left'>
               <SectionLabel>Refer & Earn</SectionLabel>
-              <h2 className='font-heading font-bold text-[clamp(1.5rem,3vw,2.2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
+              <h2 className='font-heading font-bold text-[clamp(1.4rem,3vw,2.2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
                 YaarWin Grand Referral Event 2026
               </h2>
-              <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.75] mb-6'>
+              <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.75] mb-5'>
                 Invite friends to join YaarWin and climb the leaderboard to win
                 luxury prizes — including a{' '}
                 <strong className='text-[--color-yw-text-primary]'>
                   Mercedes-Benz A-Class Limousine worth ₹55 Lakh!
                 </strong>
               </p>
-              <div className='inline-flex items-center gap-2 px-4 py-2.5 bg-[--color-yw-white-tint] border border-[rgba(0,200,83,0.2)] rounded-lg text-[13px] text-[--color-yw-text-muted] mb-7'>
+              <div className='inline-flex items-center gap-2 px-4 py-2.5 bg-[--color-yw-white-tint] border border-[rgba(0,200,83,0.2)] rounded-lg text-[13px] text-[--color-yw-text-muted] mb-6'>
                 📅 March 1 – April 30, 2026
               </div>
               <br />
@@ -1033,18 +1052,16 @@ export default function HomeClient() {
                 View Full Event Details →
               </Link>
             </div>
-
-            {/* Right — leaderboard */}
             <div className='card overflow-hidden p-0 animate-slide-right'>
               <div className='px-5 py-4 border-b border-[--color-yw-white-border] bg-[--color-yw-white-tint]'>
                 <span className='font-heading font-semibold text-[14px] text-[--color-yw-text-primary]'>
                   🏆 Prize Leaderboard
                 </span>
               </div>
-              {referralPrizes.map(({ rank, prize, value, top }, i) => (
+              {referralPrizes.map(({ rank, prize, value, top }) => (
                 <div
                   key={rank}
-                  className='flex items-center justify-between px-5 py-3.5 border-b border-[--color-yw-white-border] last:border-0'
+                  className='flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-[--color-yw-white-border] last:border-0'
                   style={{
                     background: top ? 'rgba(0,200,83,0.05)' : 'transparent',
                   }}
@@ -1067,14 +1084,14 @@ export default function HomeClient() {
             </div>
           </div>
 
-          {/* How to use referral program */}
-          <div className='grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-8 items-center card'>
-            <div className='animate-scale-in'>
-              <ImagePlaceholder
-                label='Referral Dashboard — yaarwin-login-491x1024'
-                ratio='aspect-[491/1024]'
-              />
-            </div>
+          <div className='grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-6 sm:gap-8 items-center card'>
+            <PhoneImg
+              src='/yaarwin-login-491x1024.png'
+              alt='YaarWin Referral Screen'
+              w={491}
+              h={1024}
+              className='max-w-[140px]'
+            />
             <div>
               <h3 className='font-heading font-semibold text-[16px] text-[--color-yw-text-primary] mb-3'>
                 How to Use the Referral Program
@@ -1101,13 +1118,13 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ══════════════ GIFT CODE (missing on original component) ══════════════ */}
-      <section className='py-24 px-6 bg-white'>
+      {/* ══════════════ GIFT CODE ══════════════ */}
+      <section className='py-16 sm:py-24 px-4 sm:px-6 bg-white'>
         <div className='max-w-[1000px] mx-auto'>
-          <div className='grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-10 items-center card'>
+          <div className='grid grid-cols-1 lg:grid-cols-[1fr_180px] gap-8 sm:gap-10 items-center card'>
             <div>
               <SectionLabel>Bonus Codes</SectionLabel>
-              <h2 className='font-heading font-bold text-[clamp(1.4rem,3vw,2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
+              <h2 className='font-heading font-bold text-[clamp(1.3rem,3vw,2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
                 How to Use a YaarWin Gift Code
               </h2>
               <p className='text-[14px] text-[--color-yw-text-muted] leading-[1.75] mb-6'>
@@ -1134,22 +1151,23 @@ export default function HomeClient() {
                 ))}
               </ol>
             </div>
-            <div className='animate-scale-in w-full'>
-              <ImagePlaceholder
-                label='Gift Code Screen — yaar-win-apk-489x1024'
-                ratio='aspect-[489/1024]'
-              />
-            </div>
+            <PhoneImg
+              src='/yaar-win-apk-489x1024.png'
+              alt='YaarWin Gift Code Screen'
+              w={489}
+              h={1024}
+              className='max-w-[140px] order-first lg:order-last'
+            />
           </div>
         </div>
       </section>
 
-      {/* ══════════════ ALTERNATIVES (missing on original component) ══════════════ */}
-      <section className='py-24 px-6 bg-[--color-yw-off-white]'>
+      {/* ══════════════ ALTERNATIVES ══════════════ */}
+      <section className='py-16 sm:py-24 px-4 sm:px-6 bg-[--color-yw-off-white]'>
         <div className='max-w-[900px] mx-auto'>
-          <div className='text-center mb-12'>
+          <div className='text-center mb-10 sm:mb-12'>
             <SectionLabel>Also Worth Knowing</SectionLabel>
-            <h2 className='font-heading font-bold text-[clamp(1.5rem,3vw,2.2rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
+            <h2 className='font-heading font-bold text-[clamp(1.4rem,3vw,2.2rem)] text-[--color-yw-text-primary] mt-2 tracking-tight'>
               Popular YaarWin Alternatives
             </h2>
             <p className='text-[14px] text-[--color-yw-text-muted] max-w-[480px] mx-auto mt-3'>
@@ -1157,7 +1175,7 @@ export default function HomeClient() {
               alternatives with prediction games and wallet features.
             </p>
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-5'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5'>
             {alternatives.map(({ name, desc }, i) => (
               <div
                 key={name}
@@ -1187,18 +1205,18 @@ export default function HomeClient() {
 
       {/* ══════════════ RESPONSIBLE GAMING ══════════════ */}
       <section
-        className='py-16 px-6 border-y border-[rgba(0,200,83,0.15)]'
+        className='py-14 sm:py-16 px-4 sm:px-6 border-y border-[rgba(0,200,83,0.15)]'
         style={{ background: 'rgba(0,200,83,0.04)' }}
       >
         <div className='max-w-[860px] mx-auto'>
-          <h2 className='font-heading font-bold text-[clamp(1.3rem,3vw,1.8rem)] text-[--color-yw-text-primary] mb-4 tracking-tight'>
+          <h2 className='font-heading font-bold text-[clamp(1.2rem,3vw,1.8rem)] text-[--color-yw-text-primary] mb-4 tracking-tight'>
             🛡️ Responsible Gaming on Yaar Win
           </h2>
-          <p className='text-[14px] text-[--color-yw-text-muted] leading-[1.75] mb-6'>
+          <p className='text-[14px] text-[--color-yw-text-muted] leading-[1.75] mb-5'>
             Playing on YaarWin should always be safe, controlled, and enjoyable.
             Always play for entertainment purposes only.
           </p>
-          <div className='flex flex-wrap gap-2.5 mb-6'>
+          <div className='flex flex-wrap gap-2 sm:gap-2.5 mb-5'>
             {[
               'Set a Spending Limit',
               'Control Your Playing Time',
@@ -1224,24 +1242,91 @@ export default function HomeClient() {
       {/* ══════════════ FAQ ══════════════ */}
       <FaqAccordion />
 
-      {/* ══════════════ DISCLAIMER ══════════════ */}
-      <section className='py-12 px-6 bg-white'>
-        <div className='max-w-[900px] mx-auto p-6 bg-[--color-yw-off-white] border border-[--color-yw-white-border] rounded-xl'>
-          <h3 className='font-heading font-semibold text-[12px] text-[--color-yw-warning] uppercase tracking-widest mb-3'>
-            ⚠️ Disclaimer
-          </h3>
-          <p className='text-[12px] text-[--color-yw-text-hint] leading-[1.75]'>
-            This website is not the official website of yaarwin.game or any
-            related application. The information shared on this website is
-            published only for educational, informational, and awareness
-            purposes. We do not own, manage, operate, or officially promote any
-            gaming service. All trademarks and logos belong to their respective
-            owners. Users are strongly advised not to deposit money without
-            understanding the financial risks involved. Online prediction and
-            gaming platforms may lead to financial loss, and winning is never
-            guaranteed. This website is strictly for users aged 18 years and
-            above.
+      {/* ══════════════ CONCLUSION (from yaarwin.game) ══════════════ */}
+      <section className='py-16 sm:py-20 px-4 sm:px-6 bg-white'>
+        <div className='max-w-[860px] mx-auto text-center'>
+          <SectionLabel>Conclusion</SectionLabel>
+          <h2 className='font-heading font-bold text-[clamp(1.4rem,3vw,2rem)] text-[--color-yw-text-primary] mt-2 mb-4 tracking-tight'>
+            Is YaarWin Worth Playing?
+          </h2>
+          <p className='text-[15px] text-[--color-yw-text-muted] leading-[1.8] max-w-[700px] mx-auto mb-8'>
+            YaarWin offers a wide variety of games, a smooth registration
+            process, fast withdrawals, and regular referral bonuses. With its
+            lightweight 12 MB APK and mobile-first design, it's accessible to
+            users across India. Always play responsibly and within your limits.
           </p>
+          <a
+            href='https://4yaarwin.com/#/register?invitationCode=24348109027'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='btn btn-primary btn-lg'
+          >
+            🎮 Register on YaarWin Free
+          </a>
+        </div>
+      </section>
+
+      {/* ══════════════ DISCLAIMER — HIGHLIGHTED ══════════════ */}
+      <section className='py-10 sm:py-12 px-4 sm:px-6 bg-[--color-yw-off-white]'>
+        <div className='max-w-[900px] mx-auto'>
+          {/* ✅ Highlighted disclaimer box with warning styling */}
+          <div
+            className='rounded-2xl overflow-hidden'
+            style={{
+              border: '2px solid rgba(245,158,11,0.5)',
+              boxShadow: '0 4px 24px rgba(245,158,11,0.08)',
+            }}
+          >
+            {/* Header bar */}
+            <div
+              className='flex items-center gap-3 px-5 sm:px-6 py-3.5'
+              style={{
+                background: 'rgba(245,158,11,0.12)',
+                borderBottom: '1.5px solid rgba(245,158,11,0.3)',
+              }}
+            >
+              <span className='text-xl'>⚠️</span>
+              <span className='font-heading font-bold text-sm tracking-wider uppercase text-amber-700'>
+                Important Disclaimer
+              </span>
+              <span
+                className='ml-auto text-[10px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-widest'
+                style={{
+                  background: 'rgba(245,158,11,0.2)',
+                  color: '#b45309',
+                  border: '1px solid rgba(245,158,11,0.4)',
+                }}
+              >
+                18+ Only
+              </span>
+            </div>
+            {/* Body */}
+            <div className='px-5 sm:px-6 py-5 bg-white'>
+              <p className='text-[13px] text-[--color-yw-text-muted] leading-[1.85]'>
+                This website is{' '}
+                <strong className='text-amber-700'>
+                  not the official website
+                </strong>{' '}
+                of yaarwin.game or any related application. The information
+                shared on this website is published only for{' '}
+                <strong>
+                  educational, informational, and awareness purposes
+                </strong>
+                . We do not own, manage, operate, or officially promote any
+                gaming service. All trademarks and logos belong to their
+                respective owners.
+              </p>
+              <p className='text-[13px] text-[--color-yw-text-muted] leading-[1.85] mt-3'>
+                Users are strongly advised{' '}
+                <strong className='text-amber-700'>
+                  not to deposit money without understanding the financial risks
+                </strong>{' '}
+                involved. Online prediction and gaming platforms may lead to
+                financial loss, and winning is never guaranteed. This website is
+                strictly for users <strong>aged 18 years and above</strong>.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
