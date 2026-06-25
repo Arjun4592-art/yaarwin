@@ -137,7 +137,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href='/' className='flex items-center gap-2.5 no-underline'>
             <Image
-              src='/logo.png'
+              src='/yaarwin-logo.png'
               alt='YaarWin Logo'
               width={100}
               height={36}
