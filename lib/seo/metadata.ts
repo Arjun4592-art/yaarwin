@@ -101,37 +101,25 @@ export const rootMetadata: Metadata = {
    HOME PAGE  (app/page.tsx)
 ───────────────────────────────────────────── */
 export const homeMetadata: Metadata = {
-  title: 'Yaar Win App Download – Latest Version, Bonus & Features',
+  title: 'Yaar Win App Download 2026 – Welcome Bonus & Online Games',
   description:
     'Download Yaar Win App and explore exciting online games, welcome rewards, secure transactions, and user-friendly gameplay. Learn about features, bonuses, and the latest APK download guide.',
-  keywords: [
-    'yaar win',
-    'yaar win apk',
-    'yaar win download',
-    'yaar win website',
-    'yaar win game',
-    'yaar win game online',
-    'yaar win app',
-    'yaar win app download',
-    'yaar win apk download',
-    'yaar win online game',
-    'yaar win bonus',
-    'yaar win welcome bonus',
-    'yaar win latest version',
-    'yaar win review',
-    'yaar win game download',
-    'yaar win registration',
-    'yaar win rewards',
-    'yaar win mobile app',
-    'yaar win gaming app',
-  ],
+  keywords:
+    'yaar win, Yaar win, Yaar win apk, Yaar win download, Yaar win website, Yaar win game, Yaar win game online, yaar win app, yaar win app download, yaar win apk, yaar win apk download, yaar win online game, yaar win bonus, yaar win welcome bonus, yaar win latest version, yaar win review, yaar win game download, yaar win registration, yaar win rewards, yaar win mobile app, yaar win gaming app',
   alternates: { canonical: SITE_URL },
   openGraph: {
     url: SITE_URL,
-    title: 'Yaar Win App Download – Latest Version, Bonus & Features',
+    title: 'Yaar Win App Download 2026 – Welcome Bonus & Online Games',
     description:
-      'Download Yaar Win App and explore exciting online games, welcome rewards, secure transactions, and user-friendly gameplay.',
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+      'Download Yaar Win App and explore exciting online games, welcome rewards, secure transactions, and user-friendly gameplay. Learn about features, bonuses, and the latest APK download guide.',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Yaar Win App Download',
+      },
+    ],
   },
 }
 
