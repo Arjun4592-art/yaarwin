@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getBlogBySlug, blogs, type Section } from '@/components/data/blogs'
 
+const SITE_URL = 'https://yaarwiner.com'
+
 /* ── Metadata ─────────────────────────────────────────────────────────── */
 export async function generateMetadata({
   params,
@@ -12,9 +14,33 @@ export async function generateMetadata({
   const { slug } = await params
   const blog = getBlogBySlug(slug)
   if (!blog) return {}
+
   return {
     title: blog.metaTitle,
     description: blog.metaDescription,
+    alternates: {
+      canonical: `${SITE_URL}/blogs/${blog.slug}`,
+    },
+    openGraph: {
+      url: `${SITE_URL}/blogs/${blog.slug}`,
+      title: blog.metaTitle,
+      description: blog.metaDescription,
+      type: 'article',
+      images: [
+        {
+          url: `${SITE_URL}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: blog.metaTitle,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: blog.metaTitle,
+      description: blog.metaDescription,
+      images: [`${SITE_URL}/og-image.jpg`],
+    },
   }
 }
 
